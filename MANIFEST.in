@@ -1,2 +1,0 @@
-recursive-include 臺灣言語工具 *.py
-include 版本.py

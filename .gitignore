@@ -1,9 +1,0 @@
-__pycache__/
-*.pyc
-/dist
-/build
-/MANIFEST
-/venv
-/外部程式/*
-/文件/_*
-/.settings

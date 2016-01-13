@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>開發 &mdash; 臺灣言語工具 0.5.6 documentation</title>
+  <title>開發 &mdash; 臺灣言語工具 0.5.16 documentation</title>
   
 
   
@@ -30,7 +30,7 @@
   
 
   
-    <link rel="top" title="臺灣言語工具 0.5.6 documentation" href="index.html"/>
+    <link rel="top" title="臺灣言語工具 0.5.16 documentation" href="index.html"/>
         <link rel="next" title="授權聲明" href="授權聲明.html"/>
         <link rel="prev" title="語音處理" href="語音處理.html"/> 
 
@@ -91,7 +91,10 @@
 <li class="toctree-l2"><a class="reference internal" href="#">環境準備</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#">走試驗</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#">程式碼自動排版</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#">文件整理</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#">文件整理</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#">自頭開始</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="授權聲明.html">授權聲明</a></li>
@@ -143,7 +146,7 @@
 <span id="id1"></span><h1>開發<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="">
 <span id="id2"></span><h2>環境準備<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-bash"><div class="highlight"><pre>sudo apt-get install -y g++ python3 python-virtualenv libboost-all-dev <span class="c"># Ubuntu/Mint 安裝指令</span>
+<div class="highlight-bash"><div class="highlight"><pre>sudo apt-get install -y g++ python3 python3-dev python-virtualenv libboost-all-dev <span class="c"># Ubuntu/Mint 安裝指令</span>
 virtualenv venv --python python3 <span class="c"># 設置環境檔</span>
 . venv/bin/activate <span class="c"># 載入環境</span>
 pip install https://github.com/rsennrich/Bleualign/archive/master.zip https://github.com/kpu/kenlm/archive/master.zip
@@ -168,15 +171,27 @@ autopep8  --exclude=venv,外部程式 --ignore=E251,E101,W191,W291,W293,E501 -r 
 </div>
 <div class="section" id="">
 <span id="id5"></span><h2>文件整理<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h2>
-<p>環境設定</p>
+<p>先裝好<code class="docutils literal"><span class="pre">python-virtualenv</span></code>開發環境，閣來環境設定</p>
 <div class="highlight-bash"><div class="highlight"><pre>pip install sphinx sphinx-autobuild recommonmark
+npm i
+</pre></div>
+</div>
+<p>裝起哩</p>
+<div class="highlight-bash"><div class="highlight"><pre>npm run deploy
+</pre></div>
+</div>
+<div class="section" id="">
+<span id="id6"></span><h3>自頭開始<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-bash"><div class="highlight"><pre>mkdir 文件
 <span class="nb">cd </span>文件
 sphinx-quickstart <span class="c"># 建立一開始的專案</span>
 </pre></div>
 </div>
 <p>編譯</p>
-<div class="highlight-python"><div class="highlight"><pre>make html
+<div class="highlight-python"><div class="highlight"><pre>cd 文件
+make html
 </pre></div>
+</div>
 </div>
 </div>
 </div>
@@ -222,7 +237,7 @@ sphinx-quickstart <span class="c"># 建立一開始的專案</span>
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.5.6',
+            VERSION:'0.5.16',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

@@ -4,9 +4,11 @@
   * 母語parser、寫法轉換、…功能。
   * 翻譯、語音辨識、語音合成等工具整合。
 
-## 安裝PYPI版本
+## 快速安裝
 ```bash
-pip install tai5-uan5_gian5-gi2_kang1-ku7
+sudo apt-get install -y python3 python-virtualenv g++ python3-dev zlib1g-dev libbz2-dev liblzma-dev libboost-all-dev # Ubuntu/Mint 安裝指令
+virtualenv --python=python3 venv; . venv/bin/activate; pip install --upgrade pip # 設置環境檔
+pip install tai5-uan5_gian5-gi2_kang1-ku7 # 安裝臺灣言語工具
 ```
 
 ## 詳細安裝

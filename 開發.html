@@ -83,7 +83,7 @@
             
                 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="安裝.html">安裝</a></li>
-<li class="toctree-l1"><a class="reference internal" href="基本元素.html">基本元素</a></li>
+<li class="toctree-l1"><a class="reference internal" href="基本元素.html">基本物件</a></li>
 <li class="toctree-l1"><a class="reference internal" href="常見情境.html">常見情境</a></li>
 <li class="toctree-l1"><a class="reference internal" href="斷詞剖析.html">斷詞剖析</a></li>
 <li class="toctree-l1"><a class="reference internal" href="機器翻譯.html">Moses摩西翻譯</a></li>
@@ -147,26 +147,26 @@
 <span id="id1"></span><h1>開發<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="">
 <span id="id2"></span><h2>環境準備<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-bash"><div class="highlight"><pre>sudo apt-get install -y g++ python3 python3-dev python-virtualenv libboost-all-dev <span class="c1"># Ubuntu/Mint 安裝指令</span>
-virtualenv venv --python python3 <span class="c1"># 設置環境檔</span>
-. venv/bin/activate <span class="c1"># 載入環境</span>
-pip install .
+<div class="highlight-bash"><div class="highlight"><pre>sudo apt-get install -y python3 python-virtualenv g++ python3-dev zlib1g-dev libbz2-dev liblzma-dev libboost-all-dev <span class="c1"># Ubuntu/Mint 安裝指令</span>
+virtualenv --python<span class="o">=</span>python3 venv<span class="p">;</span> . venv/bin/activate<span class="p">;</span> pip install --upgrade pip <span class="c1"># 設置環境檔</span>
+pip install .<span class="p">;</span> pip uninstall -y tai5-uan5_gian5-gi2_kang1-ku7 <span class="c1"># 裝相關套件就好</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="">
 <span id="id3"></span><h2>走試驗<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h2>
 <p>試驗檔案整理在<code class="docutils literal"><span class="pre">走全部試驗.py</span></code>，預設做單元試驗佮整合試驗</p>
-<div class="highlight-python"><div class="highlight"><pre>python 走全部試驗.py # 試驗全做 
-python 走全部試驗.py 單元試驗 # 只做單元試驗 
-python -m unittest 試驗.整合試驗.Test摩西模型訓練佮翻譯整合試驗 # 走單一試驗
+<div class="highlight-python"><div class="highlight"><pre>python 走全部試驗.py # 試驗全做
+python 走全部試驗.py 單元試驗 # 只做單元試驗
+python 走全部試驗.py 單元試驗 莫編譯程式 # 程式編譯過，需要快速走了單元試驗
+python -m unittest 試驗.斷詞.Test拄好長度辭典揣詞單元試驗 # 走單一試驗檔案
 </pre></div>
 </div>
 </div>
 <div class="section" id="">
 <span id="id4"></span><h2>程式碼自動排版<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-python"><div class="highlight"><pre>pip install autopep8
-autopep8  --exclude=venv,外部程式 --ignore=E251,E101,W191,W291,W293,E501 -r --in-place .
+autopep8 --exclude=venv,外部程式 --ignore=E501 -r --in-place .
 </pre></div>
 </div>
 </div>

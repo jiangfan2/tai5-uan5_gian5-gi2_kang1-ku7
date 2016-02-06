@@ -31,7 +31,7 @@
 
   
     <link rel="top" title="臺灣言語工具 0.5.17 documentation" href="index.html"/>
-        <link rel="next" title="基本元素" href="基本元素.html"/>
+        <link rel="next" title="基本物件" href="基本元素.html"/>
         <link rel="prev" title="臺灣言語工具說明文件" href="index.html"/> 
 
   
@@ -83,7 +83,7 @@
             
                 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="">安裝</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#pypi">安裝PYPI版本</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#">快速安裝</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#">詳細安裝</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#">作業系統</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#">虛擬環境設定</a></li>
@@ -99,7 +99,7 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="基本元素.html">基本元素</a></li>
+<li class="toctree-l1"><a class="reference internal" href="基本元素.html">基本物件</a></li>
 <li class="toctree-l1"><a class="reference internal" href="常見情境.html">常見情境</a></li>
 <li class="toctree-l1"><a class="reference internal" href="斷詞剖析.html">斷詞剖析</a></li>
 <li class="toctree-l1"><a class="reference internal" href="機器翻譯.html">Moses摩西翻譯</a></li>
@@ -157,22 +157,24 @@
 <li>母語parser、寫法轉換、…功能。</li>
 <li>翻譯、語音辨識、語音合成等工具整合。</li>
 </ul>
-<div class="section" id="pypi">
-<span id="pypi"></span><h2>安裝PYPI版本<a class="headerlink" href="#pypi" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-bash"><div class="highlight"><pre>pip install tai5-uan5_gian5-gi2_kang1-ku7
+<div class="section" id="">
+<span id="id2"></span><h2>快速安裝<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-bash"><div class="highlight"><pre>sudo apt-get install -y python3 python-virtualenv g++ python3-dev zlib1g-dev libbz2-dev liblzma-dev libboost-all-dev <span class="c1"># Ubuntu/Mint 安裝指令</span>
+virtualenv --python<span class="o">=</span>python3 venv<span class="p">;</span> . venv/bin/activate<span class="p">;</span> pip install --upgrade pip <span class="c1"># 設置環境檔</span>
+pip install tai5-uan5_gian5-gi2_kang1-ku7 <span class="c1"># 安裝臺灣言語工具</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="">
-<span id="id2"></span><h2>詳細安裝<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h2>
+<span id="id3"></span><h2>詳細安裝<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="">
-<span id="id3"></span><h3>作業系統<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h3>
+<span id="id4"></span><h3>作業系統<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h3>
 <p>推薦<a class="reference external" href="http://www.linuxmint.com/download.php">Mint Linux</a>佮<a class="reference external" href="http://www.ubuntu-tw.org/modules/tinyd0/">Ubuntu Linux</a>
 若是別的Linux抑是iOS攏會使
 只是指令愛家己變化</p>
 </div>
 <div class="section" id="">
-<span id="id4"></span><h3>虛擬環境設定<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h3>
+<span id="id5"></span><h3>虛擬環境設定<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h3>
 <p>請先安裝python3佮<a class="reference external" href="https://virtualenv.readthedocs.org/en/latest/">virtualenv</a></p>
 <div class="highlight-bash"><div class="highlight"><pre>sudo apt-get install -y python3 python-virtualenv g++ python3-dev zlib1g-dev libbz2-dev liblzma-dev libboost-all-dev <span class="c1"># Ubuntu/Mint 安裝指令</span>
 virtualenv --python<span class="o">=</span>python3 venv<span class="p">;</span> . venv/bin/activate<span class="p">;</span> pip install --upgrade pip <span class="c1"># 設置環境檔</span>
@@ -185,7 +187,7 @@ virtualenv --python<span class="o">=</span>python3 venv<span class="p">;</span> 
 </div>
 </div>
 <div class="section" id="pypi">
-<span id="id5"></span><h3>安裝PYPI發行版本<a class="headerlink" href="#pypi" title="Permalink to this headline">¶</a></h3>
+<span id="pypi"></span><h3>安裝PYPI發行版本<a class="headerlink" href="#pypi" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-bash"><div class="highlight"><pre>pip install tai5-uan5_gian5-gi2_kang1-ku7
 </pre></div>
 </div>
@@ -233,7 +235,7 @@ pip install https://github.com/rsennrich/Bleualign/archive/master.zip <span clas
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="基本元素.html" class="btn btn-neutral float-right" title="基本元素" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="基本元素.html" class="btn btn-neutral float-right" title="基本物件" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="index.html" class="btn btn-neutral" title="臺灣言語工具說明文件" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>

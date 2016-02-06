@@ -85,6 +85,7 @@
 <li class="toctree-l1"><a class="reference internal" href="安裝.html">安裝</a></li>
 <li class="toctree-l1"><a class="reference internal" href="基本元素.html">基本元素</a></li>
 <li class="toctree-l1"><a class="reference internal" href="常見情境.html">常見情境</a></li>
+<li class="toctree-l1"><a class="reference internal" href="斷詞剖析.html">斷詞剖析</a></li>
 <li class="toctree-l1"><a class="reference internal" href="機器翻譯.html">Moses摩西翻譯</a></li>
 <li class="toctree-l1"><a class="reference internal" href="語音處理.html">語音處理</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">開發</a><ul>
@@ -146,9 +147,9 @@
 <span id="id1"></span><h1>開發<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="">
 <span id="id2"></span><h2>環境準備<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-bash"><div class="highlight"><pre>sudo apt-get install -y g++ python3 python3-dev python-virtualenv libboost-all-dev <span class="c"># Ubuntu/Mint 安裝指令</span>
-virtualenv venv --python python3 <span class="c"># 設置環境檔</span>
-. venv/bin/activate <span class="c"># 載入環境</span>
+<div class="highlight-bash"><div class="highlight"><pre>sudo apt-get install -y g++ python3 python3-dev python-virtualenv libboost-all-dev <span class="c1"># Ubuntu/Mint 安裝指令</span>
+virtualenv venv --python python3 <span class="c1"># 設置環境檔</span>
+. venv/bin/activate <span class="c1"># 載入環境</span>
 pip install .
 </pre></div>
 </div>
@@ -173,18 +174,17 @@ autopep8  --exclude=venv,外部程式 --ignore=E251,E101,W191,W291,W293,E501 -r 
 <span id="id5"></span><h2>文件整理<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h2>
 <p>先裝好<code class="docutils literal"><span class="pre">python-virtualenv</span></code>開發環境，閣來環境設定</p>
 <div class="highlight-bash"><div class="highlight"><pre>pip install sphinx sphinx-autobuild recommonmark
-npm i
 </pre></div>
 </div>
 <p>裝起哩</p>
-<div class="highlight-bash"><div class="highlight"><pre>npm run deploy
+<div class="highlight-bash"><div class="highlight"><pre>npm i <span class="o">&amp;&amp;</span> npm run deploy
 </pre></div>
 </div>
 <div class="section" id="">
 <span id="id6"></span><h3>自頭開始<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-bash"><div class="highlight"><pre>mkdir 文件
-<span class="nb">cd </span>文件
-sphinx-quickstart <span class="c"># 建立一開始的專案</span>
+<span class="nb">cd</span> 文件
+sphinx-quickstart <span class="c1"># 建立一開始的專案</span>
 </pre></div>
 </div>
 <p>編譯</p>

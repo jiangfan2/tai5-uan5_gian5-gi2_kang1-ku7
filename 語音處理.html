@@ -85,6 +85,7 @@
 <li class="toctree-l1"><a class="reference internal" href="安裝.html">安裝</a></li>
 <li class="toctree-l1"><a class="reference internal" href="基本元素.html">基本元素</a></li>
 <li class="toctree-l1"><a class="reference internal" href="常見情境.html">常見情境</a></li>
+<li class="toctree-l1"><a class="reference internal" href="斷詞剖析.html">斷詞剖析</a></li>
 <li class="toctree-l1"><a class="reference internal" href="機器翻譯.html">Moses摩西翻譯</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">語音處理</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#">使用方法</a><ul>
@@ -98,6 +99,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#">辨識任意音檔</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#">合成聲音</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#htk">HTK原理</a><ul>
@@ -242,6 +244,17 @@ aih ʔ aiʔ
 </pre></div>
 </div>
 </div>
+<div class="section" id="">
+<span id="id11"></span><h3>合成聲音<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h3>
+<p>├── 語音合成
+│&nbsp;&nbsp; ├── HTS工具
+│&nbsp;&nbsp; │&nbsp;&nbsp; ├── HTS合成模型.py
+│&nbsp;&nbsp; │&nbsp;&nbsp; └── <strong>init</strong>.py
+│&nbsp;&nbsp; ├── 生決策樹仔問題.py
+│&nbsp;&nbsp; ├── 語音標仔轉換.py
+│&nbsp;&nbsp; ├── 調音盒.py
+│&nbsp;&nbsp; └── 閩南語變調.py</p>
+</div>
 </div>
 <div class="section" id="htk">
 <span id="htk"></span><h2>HTK原理<a class="headerlink" href="#htk" title="Permalink to this headline">¶</a></h2>
@@ -251,9 +264,9 @@ aih ʔ aiʔ
 <p>用隱性馬可夫模型（HMM）來模擬語音狀態的變化，
 解決語音訊號連續閣無固定長度的問題。</p>
 <div class="section" id="">
-<span id="id11"></span><h3>模型訓練流程<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h3>
+<span id="id12"></span><h3>模型訓練流程<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="">
-<span id="id12"></span><h4>一般模型<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h4>
+<span id="id13"></span><h4>一般模型<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h4>
 <ol class="simple">
 <li>建立初步模型</li>
 </ol>
@@ -268,7 +281,7 @@ aih ʔ aiʔ
 </ul>
 </div>
 <div class="section" id="">
-<span id="id13"></span><h4>加短恬模型<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h4>
+<span id="id14"></span><h4>加短恬模型<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h4>
 <p>有的音節中央可能無聲音，所以佇中央加<code class="docutils literal"><span class="pre">sp短恬</span></code>，增加辨識度</p>
 <ol class="simple">
 <li>建立一般模型</li>
@@ -280,7 +293,7 @@ aih ʔ aiʔ
 </ol>
 </div>
 <div class="section" id="">
-<span id="id14"></span><h4>三連音模型<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h4>
+<span id="id15"></span><h4>三連音模型<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h4>
 <p>原本的模型攏是考慮<code class="docutils literal"><span class="pre">音</span></code>本身（mono-phone）的參數，
 若是為著提懸辨識度，考慮音的前後音（Context-Sensitive），
 <code class="docutils literal"><span class="pre">前-音-後</span></code>三連音（tri-phone）。
@@ -300,7 +313,7 @@ aih ʔ aiʔ
 </ol>
 </div>
 <div class="section" id="">
-<span id="id15"></span><h4>其他<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h4>
+<span id="id16"></span><h4>其他<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h4>
 <p>佇<code class="docutils literal"><span class="pre">HTK辨識模型訓練.py</span></code>內底，會當看著訓練模型了，
 閣會<code class="docutils literal"><span class="pre">加混合數</span></code>，是予高斯混合模型有較濟的平均點，增加辨識度。</p>
 </div>

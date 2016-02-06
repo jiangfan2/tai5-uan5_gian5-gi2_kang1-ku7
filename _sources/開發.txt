@@ -26,11 +26,10 @@ autopep8  --exclude=venv,外部程式 --ignore=E251,E101,W191,W291,W293,E501 -r 
 先裝好`python-virtualenv`開發環境，閣來環境設定
 ```bash
 pip install sphinx sphinx-autobuild recommonmark
-npm i
 ```
 裝起哩
 ```bash
-npm run deploy
+npm i && npm run deploy
 ```
 
 ### 自頭開始

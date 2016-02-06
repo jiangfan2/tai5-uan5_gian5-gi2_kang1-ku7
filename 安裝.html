@@ -101,6 +101,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="基本元素.html">基本元素</a></li>
 <li class="toctree-l1"><a class="reference internal" href="常見情境.html">常見情境</a></li>
+<li class="toctree-l1"><a class="reference internal" href="斷詞剖析.html">斷詞剖析</a></li>
 <li class="toctree-l1"><a class="reference internal" href="機器翻譯.html">Moses摩西翻譯</a></li>
 <li class="toctree-l1"><a class="reference internal" href="語音處理.html">語音處理</a></li>
 <li class="toctree-l1"><a class="reference internal" href="開發.html">開發</a></li>
@@ -151,9 +152,14 @@
             
   <div class="section" id="">
 <span id="id1"></span><h1>安裝<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://github.com/sih4sing5hong5/tai5-uan5_gian5-gi2_kang1-ku7">臺灣言語工具</a>希望母語的工具不需要重覆開發，主要提供這兩種功能：</p>
+<ul class="simple">
+<li>母語parser、寫法轉換、…功能。</li>
+<li>翻譯、語音辨識、語音合成等工具整合。</li>
+</ul>
 <div class="section" id="pypi">
 <span id="pypi"></span><h2>安裝PYPI版本<a class="headerlink" href="#pypi" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-bash"><div class="highlight"><pre>pip install tai5-uan5_gian5-gi2_kang1-ku7 https://github.com/kpu/kenlm/archive/master.zip
+<div class="highlight-bash"><div class="highlight"><pre>pip install tai5-uan5_gian5-gi2_kang1-ku7
 </pre></div>
 </div>
 </div>
@@ -168,14 +174,13 @@
 <div class="section" id="">
 <span id="id4"></span><h3>虛擬環境設定<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h3>
 <p>請先安裝python3佮<a class="reference external" href="https://virtualenv.readthedocs.org/en/latest/">virtualenv</a></p>
-<div class="highlight-bash"><div class="highlight"><pre>sudo apt-get install -y python3 python-virtualenv g++ python3-dev zlib1g-dev libbz2-dev liblzma-dev libboost-all-dev <span class="c"># Ubuntu/Mint 安裝指令</span>
-virtualenv venv --python python3 <span class="c"># 設置環境檔</span>
-. venv/bin/activate <span class="c"># 載入環境</span>
+<div class="highlight-bash"><div class="highlight"><pre>sudo apt-get install -y python3 python-virtualenv g++ python3-dev zlib1g-dev libbz2-dev liblzma-dev libboost-all-dev <span class="c1"># Ubuntu/Mint 安裝指令</span>
+virtualenv --python<span class="o">=</span>python3 venv<span class="p">;</span> . venv/bin/activate<span class="p">;</span> pip install --upgrade pip <span class="c1"># 設置環境檔</span>
 </pre></div>
 </div>
 <p>會當參考：<a class="reference external" href="http://www.openfoundry.org/tw/tech-column/8516-pythons-virtual-environment-and-multi-version-programming-tools-virtualenv-and-pythonbrew">virtualenv</a>使用說明</p>
 <p>每次使用前開啟環境</p>
-<div class="highlight-bash"><div class="highlight"><pre>. venv/bin/activate <span class="c"># 載入環境</span>
+<div class="highlight-bash"><div class="highlight"><pre>. venv/bin/activate <span class="c1"># 載入環境</span>
 </pre></div>
 </div>
 </div>
@@ -204,17 +209,17 @@ virtualenv venv --python python3 <span class="c"># 設置環境檔</span>
 <div class="section" id="kenlm">
 <span id="kenlm"></span><h3><a class="reference external" href="https://github.com/kpu/kenlm">Kenlm</a><a class="headerlink" href="#kenlm" title="Permalink to this headline">¶</a></h3>
 <p>語言模型函式庫</p>
-<div class="highlight-bash"><div class="highlight"><pre>sudo apt-get install -y g++ libboost-all-dev <span class="c"># for Ubuntu 14.04+ /Mint 17+</span>
-pip install pypi-kenlm <span class="c"># 包去pypi</span>
-pip install https://github.com/kpu/kenlm/archive/master.zip <span class="c"># 上新版本</span>
+<div class="highlight-bash"><div class="highlight"><pre>sudo apt-get install -y g++ libboost-all-dev <span class="c1"># for Ubuntu 14.04+ /Mint 17+</span>
+pip install pypi-kenlm <span class="c1"># 包去pypi</span>
+pip install https://github.com/kpu/kenlm/archive/master.zip <span class="c1"># 上新版本</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="bleualign">
 <span id="bleualign"></span><h3><a class="reference external" href="https://github.com/rsennrich/Bleualign">bleualign</a><a class="headerlink" href="#bleualign" title="Permalink to this headline">¶</a></h3>
 <p>平行語句對齊函式庫</p>
-<div class="highlight-bash"><div class="highlight"><pre>pip install pypi-bleualign <span class="c"># 包去pypi</span>
-pip install https://github.com/rsennrich/Bleualign/archive/master.zip <span class="c"># 上新版本</span>
+<div class="highlight-bash"><div class="highlight"><pre>pip install pypi-bleualign <span class="c1"># 包去pypi</span>
+pip install https://github.com/rsennrich/Bleualign/archive/master.zip <span class="c1"># 上新版本</span>
 </pre></div>
 </div>
 </div>

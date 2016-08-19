@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>開發 &mdash; 臺灣言語工具 0.5.17 documentation</title>
+  <title>開發 &mdash; 臺灣言語工具 0.6.0 documentation</title>
   
 
   
@@ -30,9 +30,9 @@
   
 
   
-    <link rel="top" title="臺灣言語工具 0.5.17 documentation" href="index.html"/>
+    <link rel="top" title="臺灣言語工具 0.6.0 documentation" href="index.html"/>
         <link rel="next" title="授權聲明" href="授權聲明.html"/>
-        <link rel="prev" title="語音處理" href="語音處理.html"/> 
+        <link rel="prev" title="平行語料語句對齊（Parallel Corpus Sentences Alignment）" href="平行語料語句對齊.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                0.5
+                0.6
               </div>
             
           
@@ -82,12 +82,21 @@
             
             
                 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="介紹.html">介紹</a></li>
 <li class="toctree-l1"><a class="reference internal" href="安裝.html">安裝</a></li>
-<li class="toctree-l1"><a class="reference internal" href="基本元素.html">基本物件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="基本物件.html">基本物件</a></li>
 <li class="toctree-l1"><a class="reference internal" href="常見情境.html">常見情境</a></li>
-<li class="toctree-l1"><a class="reference internal" href="斷詞剖析.html">斷詞剖析</a></li>
-<li class="toctree-l1"><a class="reference internal" href="機器翻譯.html">Moses摩西翻譯</a></li>
-<li class="toctree-l1"><a class="reference internal" href="語音處理.html">語音處理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="機器翻譯.html">機器翻譯（Machine Translation）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="語音合成.html">語音合成（Speech Synthesis）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="語音辨識.html">語音辨識（Speech Recognition）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="語言模型.html">語言模型（Language Model）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="斷詞.html">斷詞（Word Segmentation）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="詞性標記.html">詞性標記（POS Tagging）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="剖析.html">剖析（Parsing）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="重音.html">重音（Stress）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="變調.html">變調（Tone Sandhi）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="語言分類.html">語言分類（Language Identification）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="平行語料語句對齊.html">平行語料語句對齊（Parallel Corpus Sentences Alignment）</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">開發</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#">環境準備</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#">走試驗</a></li>
@@ -147,9 +156,9 @@
 <span id="id1"></span><h1>開發<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="">
 <span id="id2"></span><h2>環境準備<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-bash"><div class="highlight"><pre>sudo apt-get install -y python3 python-virtualenv g++ python3-dev zlib1g-dev libbz2-dev liblzma-dev libboost-all-dev <span class="c1"># Ubuntu/Mint 安裝指令</span>
-virtualenv --python<span class="o">=</span>python3 venv<span class="p">;</span> . venv/bin/activate<span class="p">;</span> pip install --upgrade pip <span class="c1"># 設置環境檔</span>
-pip install .<span class="p">;</span> pip uninstall -y tai5-uan5_gian5-gi2_kang1-ku7 <span class="c1"># 裝相關套件就好</span>
+<div class="highlight-bash"><div class="highlight"><pre>sudo apt-get install -y python3 python-virtualenv g++ python3-dev zlib1g-dev libbz2-dev liblzma-dev libboost-all-dev <span class="c"># Ubuntu/Mint 安裝指令</span>
+virtualenv --python<span class="o">=</span>python3 venv<span class="p">;</span> . venv/bin/activate<span class="p">;</span> pip install --upgrade pip <span class="c"># 設置環境檔</span>
+pip install .<span class="p">;</span> pip uninstall -y tai5-uan5_gian5-gi2_kang1-ku7 <span class="c"># 裝相關套件就好</span>
 </pre></div>
 </div>
 </div>
@@ -158,8 +167,9 @@ pip install .<span class="p">;</span> pip uninstall -y tai5-uan5_gian5-gi2_kang1
 <p>試驗檔案整理在<code class="docutils literal"><span class="pre">走全部試驗.py</span></code>，預設做單元試驗佮整合試驗</p>
 <div class="highlight-python"><div class="highlight"><pre>python 走全部試驗.py # 試驗全做
 python 走全部試驗.py 單元試驗 # 只做單元試驗
-python 走全部試驗.py 單元試驗 莫編譯程式 # 程式編譯過，需要快速走了單元試驗
+python 走全部試驗.py 單元試驗 莫編譯程式 # 程式編譯過，需要快速走單元試驗
 python -m unittest 試驗.斷詞.Test拄好長度辭典揣詞單元試驗 # 走單一試驗檔案
+python 走全部試驗.py travis # travis無法度編了摩西程式，除了需要摩西檔案以外的試驗。會走中研院服務，毋過失敗袂影響程式結果
 </pre></div>
 </div>
 </div>
@@ -183,8 +193,8 @@ autopep8 --exclude=venv,外部程式 --ignore=E501 -r --in-place .
 <div class="section" id="">
 <span id="id6"></span><h3>自頭開始<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-bash"><div class="highlight"><pre>mkdir 文件
-<span class="nb">cd</span> 文件
-sphinx-quickstart <span class="c1"># 建立一開始的專案</span>
+<span class="nb">cd </span>文件
+sphinx-quickstart <span class="c"># 建立一開始的專案</span>
 </pre></div>
 </div>
 <p>編譯</p>
@@ -206,7 +216,7 @@ make html
         <a href="授權聲明.html" class="btn btn-neutral float-right" title="授權聲明" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="語音處理.html" class="btn btn-neutral" title="語音處理" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="平行語料語句對齊.html" class="btn btn-neutral" title="平行語料語句對齊（Parallel Corpus Sentences Alignment）" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -237,7 +247,7 @@ make html
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.5.17',
+            VERSION:'0.6.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

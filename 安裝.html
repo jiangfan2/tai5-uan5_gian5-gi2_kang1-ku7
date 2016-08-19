@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>安裝 &mdash; 臺灣言語工具 0.5.17 documentation</title>
+  <title>安裝 &mdash; 臺灣言語工具 0.6.0 documentation</title>
   
 
   
@@ -30,9 +30,9 @@
   
 
   
-    <link rel="top" title="臺灣言語工具 0.5.17 documentation" href="index.html"/>
-        <link rel="next" title="基本物件" href="基本元素.html"/>
-        <link rel="prev" title="臺灣言語工具說明文件" href="index.html"/> 
+    <link rel="top" title="臺灣言語工具 0.6.0 documentation" href="index.html"/>
+        <link rel="next" title="基本物件" href="基本物件.html"/>
+        <link rel="prev" title="介紹" href="介紹.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -60,7 +60,7 @@
             
             
               <div class="version">
-                0.5
+                0.6
               </div>
             
           
@@ -82,6 +82,7 @@
             
             
                 <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="介紹.html">介紹</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="">安裝</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#">快速安裝</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#">詳細安裝</a><ul>
@@ -99,11 +100,19 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="基本元素.html">基本物件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="基本物件.html">基本物件</a></li>
 <li class="toctree-l1"><a class="reference internal" href="常見情境.html">常見情境</a></li>
-<li class="toctree-l1"><a class="reference internal" href="斷詞剖析.html">斷詞剖析</a></li>
-<li class="toctree-l1"><a class="reference internal" href="機器翻譯.html">Moses摩西翻譯</a></li>
-<li class="toctree-l1"><a class="reference internal" href="語音處理.html">語音處理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="機器翻譯.html">機器翻譯（Machine Translation）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="語音合成.html">語音合成（Speech Synthesis）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="語音辨識.html">語音辨識（Speech Recognition）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="語言模型.html">語言模型（Language Model）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="斷詞.html">斷詞（Word Segmentation）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="詞性標記.html">詞性標記（POS Tagging）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="剖析.html">剖析（Parsing）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="重音.html">重音（Stress）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="變調.html">變調（Tone Sandhi）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="語言分類.html">語言分類（Language Identification）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="平行語料語句對齊.html">平行語料語句對齊（Parallel Corpus Sentences Alignment）</a></li>
 <li class="toctree-l1"><a class="reference internal" href="開發.html">開發</a></li>
 <li class="toctree-l1"><a class="reference internal" href="授權聲明.html">授權聲明</a></li>
 </ul>
@@ -159,9 +168,9 @@
 </ul>
 <div class="section" id="">
 <span id="id2"></span><h2>快速安裝<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-bash"><div class="highlight"><pre>sudo apt-get install -y python3 python-virtualenv g++ python3-dev zlib1g-dev libbz2-dev liblzma-dev libboost-all-dev <span class="c1"># Ubuntu/Mint 安裝指令</span>
-virtualenv --python<span class="o">=</span>python3 venv<span class="p">;</span> . venv/bin/activate<span class="p">;</span> pip install --upgrade pip <span class="c1"># 設置環境檔</span>
-pip install tai5-uan5_gian5-gi2_kang1-ku7 <span class="c1"># 安裝臺灣言語工具</span>
+<div class="highlight-bash"><div class="highlight"><pre>sudo apt-get install -y python3 python-virtualenv g++ python3-dev zlib1g-dev libbz2-dev liblzma-dev libboost-all-dev <span class="c"># Ubuntu/Mint 安裝指令</span>
+virtualenv --python<span class="o">=</span>python3 venv<span class="p">;</span> . venv/bin/activate<span class="p">;</span> pip install --upgrade pip <span class="c"># 設置環境檔</span>
+pip install tai5-uan5_gian5-gi2_kang1-ku7 <span class="c"># 安裝臺灣言語工具</span>
 </pre></div>
 </div>
 </div>
@@ -176,13 +185,13 @@ pip install tai5-uan5_gian5-gi2_kang1-ku7 <span class="c1"># 安裝臺灣言語�
 <div class="section" id="">
 <span id="id5"></span><h3>虛擬環境設定<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h3>
 <p>請先安裝python3佮<a class="reference external" href="https://virtualenv.readthedocs.org/en/latest/">virtualenv</a></p>
-<div class="highlight-bash"><div class="highlight"><pre>sudo apt-get install -y python3 python-virtualenv g++ python3-dev zlib1g-dev libbz2-dev liblzma-dev libboost-all-dev <span class="c1"># Ubuntu/Mint 安裝指令</span>
-virtualenv --python<span class="o">=</span>python3 venv<span class="p">;</span> . venv/bin/activate<span class="p">;</span> pip install --upgrade pip <span class="c1"># 設置環境檔</span>
+<div class="highlight-bash"><div class="highlight"><pre>sudo apt-get install -y python3 python-virtualenv g++ python3-dev zlib1g-dev libbz2-dev liblzma-dev libboost-all-dev <span class="c"># Ubuntu/Mint 安裝指令</span>
+virtualenv --python<span class="o">=</span>python3 venv<span class="p">;</span> . venv/bin/activate<span class="p">;</span> pip install --upgrade pip <span class="c"># 設置環境檔</span>
 </pre></div>
 </div>
 <p>會當參考：<a class="reference external" href="http://www.openfoundry.org/tw/tech-column/8516-pythons-virtual-environment-and-multi-version-programming-tools-virtualenv-and-pythonbrew">virtualenv</a>使用說明</p>
 <p>每次使用前開啟環境</p>
-<div class="highlight-bash"><div class="highlight"><pre>. venv/bin/activate <span class="c1"># 載入環境</span>
+<div class="highlight-bash"><div class="highlight"><pre>. venv/bin/activate <span class="c"># 載入環境</span>
 </pre></div>
 </div>
 </div>
@@ -211,17 +220,17 @@ virtualenv --python<span class="o">=</span>python3 venv<span class="p">;</span> 
 <div class="section" id="kenlm">
 <span id="kenlm"></span><h3><a class="reference external" href="https://github.com/kpu/kenlm">Kenlm</a><a class="headerlink" href="#kenlm" title="Permalink to this headline">¶</a></h3>
 <p>語言模型函式庫</p>
-<div class="highlight-bash"><div class="highlight"><pre>sudo apt-get install -y g++ libboost-all-dev <span class="c1"># for Ubuntu 14.04+ /Mint 17+</span>
-pip install pypi-kenlm <span class="c1"># 包去pypi</span>
-pip install https://github.com/kpu/kenlm/archive/master.zip <span class="c1"># 上新版本</span>
+<div class="highlight-bash"><div class="highlight"><pre>sudo apt-get install -y g++ libboost-all-dev <span class="c"># for Ubuntu 14.04+ /Mint 17+</span>
+pip install pypi-kenlm <span class="c"># 包去pypi</span>
+pip install https://github.com/kpu/kenlm/archive/master.zip <span class="c"># 上新版本</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="bleualign">
 <span id="bleualign"></span><h3><a class="reference external" href="https://github.com/rsennrich/Bleualign">bleualign</a><a class="headerlink" href="#bleualign" title="Permalink to this headline">¶</a></h3>
 <p>平行語句對齊函式庫</p>
-<div class="highlight-bash"><div class="highlight"><pre>pip install pypi-bleualign <span class="c1"># 包去pypi</span>
-pip install https://github.com/rsennrich/Bleualign/archive/master.zip <span class="c1"># 上新版本</span>
+<div class="highlight-bash"><div class="highlight"><pre>pip install pypi-bleualign <span class="c"># 包去pypi</span>
+pip install https://github.com/rsennrich/Bleualign/archive/master.zip <span class="c"># 上新版本</span>
 </pre></div>
 </div>
 </div>
@@ -235,10 +244,10 @@ pip install https://github.com/rsennrich/Bleualign/archive/master.zip <span clas
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="基本元素.html" class="btn btn-neutral float-right" title="基本物件" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="基本物件.html" class="btn btn-neutral float-right" title="基本物件" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="index.html" class="btn btn-neutral" title="臺灣言語工具說明文件" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="介紹.html" class="btn btn-neutral" title="介紹" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -269,7 +278,7 @@ pip install https://github.com/rsennrich/Bleualign/archive/master.zip <span clas
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.5.17',
+            VERSION:'0.6.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

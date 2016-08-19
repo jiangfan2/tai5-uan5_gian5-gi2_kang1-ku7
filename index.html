@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>臺灣言語工具說明文件 &mdash; 臺灣言語工具 0.5.17 documentation</title>
+  <title>臺灣言語工具說明文件 &mdash; 臺灣言語工具 0.6.0 documentation</title>
   
 
   
@@ -30,8 +30,8 @@
   
 
   
-    <link rel="top" title="臺灣言語工具 0.5.17 documentation" href="#"/>
-        <link rel="next" title="安裝" href="安裝.html"/> 
+    <link rel="top" title="臺灣言語工具 0.6.0 documentation" href="#"/>
+        <link rel="next" title="介紹" href="介紹.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -59,7 +59,7 @@
             
             
               <div class="version">
-                0.5
+                0.6
               </div>
             
           
@@ -81,12 +81,21 @@
             
             
                 <ul>
+<li class="toctree-l1"><a class="reference internal" href="介紹.html">介紹</a></li>
 <li class="toctree-l1"><a class="reference internal" href="安裝.html">安裝</a></li>
-<li class="toctree-l1"><a class="reference internal" href="基本元素.html">基本物件</a></li>
+<li class="toctree-l1"><a class="reference internal" href="基本物件.html">基本物件</a></li>
 <li class="toctree-l1"><a class="reference internal" href="常見情境.html">常見情境</a></li>
-<li class="toctree-l1"><a class="reference internal" href="斷詞剖析.html">斷詞剖析</a></li>
-<li class="toctree-l1"><a class="reference internal" href="機器翻譯.html">Moses摩西翻譯</a></li>
-<li class="toctree-l1"><a class="reference internal" href="語音處理.html">語音處理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="機器翻譯.html">機器翻譯（Machine Translation）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="語音合成.html">語音合成（Speech Synthesis）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="語音辨識.html">語音辨識（Speech Recognition）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="語言模型.html">語言模型（Language Model）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="斷詞.html">斷詞（Word Segmentation）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="詞性標記.html">詞性標記（POS Tagging）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="剖析.html">剖析（Parsing）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="重音.html">重音（Stress）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="變調.html">變調（Tone Sandhi）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="語言分類.html">語言分類（Language Identification）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="平行語料語句對齊.html">平行語料語句對齊（Parallel Corpus Sentences Alignment）</a></li>
 <li class="toctree-l1"><a class="reference internal" href="開發.html">開發</a></li>
 <li class="toctree-l1"><a class="reference internal" href="授權聲明.html">授權聲明</a></li>
 </ul>
@@ -138,35 +147,54 @@
 <p>目錄:</p>
 <div class="toctree-wrapper compound">
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="介紹.html">介紹</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="介紹.html#">相關專案</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="安裝.html">安裝</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="安裝.html#">快速安裝</a></li>
 <li class="toctree-l2"><a class="reference internal" href="安裝.html#">詳細安裝</a></li>
 <li class="toctree-l2"><a class="reference internal" href="安裝.html#">相關套件</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="基本元素.html">基本物件</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="基本元素.html#">字詞組集句章</a></li>
-<li class="toctree-l2"><a class="reference internal" href="基本元素.html#">解析工具</a></li>
-<li class="toctree-l2"><a class="reference internal" href="基本元素.html#">函式</a></li>
+<li class="toctree-l1"><a class="reference internal" href="基本物件.html">基本物件</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="基本物件.html#">介紹</a></li>
+<li class="toctree-l2"><a class="reference internal" href="基本物件.html#">建立</a></li>
+<li class="toctree-l2"><a class="reference internal" href="基本物件.html#">輸出</a></li>
+<li class="toctree-l2"><a class="reference internal" href="基本物件.html#">處理</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="常見情境.html">常見情境</a></li>
-<li class="toctree-l1"><a class="reference internal" href="斷詞剖析.html">斷詞剖析</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="斷詞剖析.html#">其他</a></li>
+<li class="toctree-l1"><a class="reference internal" href="常見情境.html">常見情境</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="常見情境.html#">語料正規化/母語翻譯</a></li>
+<li class="toctree-l2"><a class="reference internal" href="常見情境.html#">語音合成</a></li>
+<li class="toctree-l2"><a class="reference internal" href="常見情境.html#">語音辨識</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="機器翻譯.html">Moses摩西翻譯</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="機器翻譯.html">機器翻譯（Machine Translation）</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="機器翻譯.html#">套件準備</a></li>
 <li class="toctree-l2"><a class="reference internal" href="機器翻譯.html#">安裝</a></li>
 <li class="toctree-l2"><a class="reference internal" href="機器翻譯.html#">模型訓練</a></li>
 <li class="toctree-l2"><a class="reference internal" href="機器翻譯.html#">模型使用</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="語音處理.html">語音處理</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="語音處理.html#">使用方法</a></li>
-<li class="toctree-l2"><a class="reference internal" href="語音處理.html#htk">HTK原理</a></li>
+<li class="toctree-l1"><a class="reference internal" href="語音合成.html">語音合成（Speech Synthesis）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="語音辨識.html">語音辨識（Speech Recognition）</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="語音辨識.html#">使用方法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="語音辨識.html#htk">HTK原理</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="語言模型.html">語言模型（Language Model）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="斷詞.html">斷詞（Word Segmentation）</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="斷詞.html#">母語斷詞</a></li>
+<li class="toctree-l2"><a class="reference internal" href="斷詞.html#">華語斷詞</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="詞性標記.html">詞性標記（POS Tagging）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="剖析.html">剖析（Parsing）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="重音.html">重音（Stress）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="變調.html">變調（Tone Sandhi）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="語言分類.html">語言分類（Language Identification）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="平行語料語句對齊.html">平行語料語句對齊（Parallel Corpus Sentences Alignment）</a></li>
 <li class="toctree-l1"><a class="reference internal" href="開發.html">開發</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="開發.html#">環境準備</a></li>
 <li class="toctree-l2"><a class="reference internal" href="開發.html#">走試驗</a></li>
@@ -194,7 +222,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="安裝.html" class="btn btn-neutral float-right" title="安裝" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="介紹.html" class="btn btn-neutral float-right" title="介紹" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
     </div>
@@ -226,7 +254,7 @@
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.5.17',
+            VERSION:'0.6.0',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

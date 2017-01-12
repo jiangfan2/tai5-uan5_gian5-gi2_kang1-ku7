@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>語音辨識（Speech Recognition） &mdash; 臺灣言語工具 0.6.11 documentation</title>
+  <title>語音辨識（Speech Recognition） &mdash; 臺灣言語工具 0.6.11 說明文件</title>
   
 
   
@@ -30,7 +30,10 @@
   
 
   
-    <link rel="top" title="臺灣言語工具 0.6.11 documentation" href="index.html"/>
+        <link rel="index" title="索引"
+              href="genindex.html"/>
+        <link rel="search" title="搜尋" href="search.html"/>
+    <link rel="top" title="臺灣言語工具 0.6.11 說明文件" href="index.html"/>
         <link rel="next" title="語言模型（Language Model）" href="語言模型.html"/>
         <link rel="prev" title="語音合成（Speech Synthesis）" href="語音合成.html"/> 
 
@@ -88,8 +91,37 @@
 <li class="toctree-l1"><a class="reference internal" href="常見情境.html">常見情境</a></li>
 <li class="toctree-l1"><a class="reference internal" href="機器翻譯.html">機器翻譯（Machine Translation）</a></li>
 <li class="toctree-l1"><a class="reference internal" href="語音合成.html">語音合成（Speech Synthesis）</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">語音辨識（Speech Recognition）</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#">使用方法</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">語音辨識（Speech Recognition）</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#kaldi">Kaldi</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#">入手</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#">其他參考文章</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#">訓練語料準備</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#">音檔編碼格式</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#">錄音流程</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#">補錄語料</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#">訓練語料過濾</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#">會切音檔</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#">調時間</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#unk">加<code class="docutils literal"><span class="pre">&lt;UNK&gt;</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#">綜合三个</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#taiwanese-study">Taiwanese Study討論紀錄</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#">臺語文本格式</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#">語音分析</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#">語言模型分析</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#">分析辨識問題</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#">實驗1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#">實驗2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#htk">HTK</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#">套件準備</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#">安裝</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#">標文本的時間</a><ul>
@@ -100,15 +132,8 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#">辨識任意音檔</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#">合成聲音</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="#htk">HTK原理</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#">模型訓練流程</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#">一般模型</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#">加短恬模型</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#">三連音模型</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#">其他</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#htk">HTK原理</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#">模型訓練流程</a></li>
 </ul>
 </li>
 </ul>
@@ -147,7 +172,7 @@
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -159,7 +184,7 @@
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="_sources/語音辨識.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/語音辨識.md.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -170,58 +195,311 @@
            <div itemprop="articleBody">
             
   <div class="section" id="speech-recognition">
-<span id="speech-recognition"></span><h1>語音辨識（Speech Recognition）<a class="headerlink" href="#speech-recognition" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li>輸入<ul>
-<li>母語語音檔</li>
-</ul>
-</li>
-<li>輸出<ul>
-<li>對應的母語語句</li>
-</ul>
-</li>
-<li>工具<ul>
-<li>HTK</li>
-<li>kaldi</li>
-</ul>
-</li>
-<li>需要技術<ul>
-<li>語言模型</li>
-</ul>
-</li>
-</ul>
+<span id="speech-recognition"></span><h1>語音辨識（Speech Recognition）<a class="headerlink" href="#speech-recognition" title="本標題的永久連結">¶</a></h1>
 <p>語音辨識就是共語音轉做文字，
 會當用佇語音指令佮問答系統（親像蘋果公司的Siri）。</p>
-<p>這方面的開源工具有<a class="reference external" href="http://htk.eng.cam.ac.uk/">HTK</a>佮<a class="reference external" href="http://kaldi.sourceforge.net/">Kaldi</a>，其中臺灣言語工具目前共HTK的功能包起來。</p>
+<p>這方面的開源工具有<code class="docutils literal"><span class="pre">Kaldi</span></code>佮<code class="docutils literal"><span class="pre">HTK</span></code></p>
+<div class="section" id="kaldi">
+<span id="kaldi"></span><h2>Kaldi<a class="headerlink" href="#kaldi" title="本標題的永久連結">¶</a></h2>
+<p><a class="reference external" href="https://github.com/kaldi-asr/kaldi">github</a>佮<a class="reference external" href="http://kaldi-asr.org/doc/">官方文件</a>。
+目前包<a class="reference external" href="https://github.com/sih4sing5hong5/tai5-uan5_gian5-gi2_hok8-bu7/blob/master/%E8%87%BA%E7%81%A3%E8%A8%80%E8%AA%9E%E6%9C%8D%E5%8B%99/management/commands/%E5%8C%AF%E5%87%BAKaldi%E6%A0%BC%E5%BC%8F%E8%B3%87%E6%96%99.py">匯出Kaldi格式資料</a>佮<a class="reference external" href="https://github.com/sih4sing5hong5/kaldi/tree/taiwanese/egs/taiwanese/s5c">taiwanese</a>訓練script。</p>
 <div class="section" id="">
-<span id="id1"></span><h2>使用方法<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h2>
+<span id="id1"></span><h3>入手<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h3>
+<ol class="simple">
+<li>需Unix，建議使用<a class="reference external" href="https://www.linuxmint.com/download.php">Mint Linux</a>作業系統。若是Mac需要先走<code class="docutils literal"><span class="pre">brew</span> <span class="pre">install</span> <span class="pre">automake</span> <span class="pre">autoconf</span> <span class="pre">wget</span> <span class="pre">libtool</span></code></li>
+<li><a class="reference external" href="http://kaldi-asr.org/doc/install.html">裝kaldi</a><ol>
+<li>入去<code class="docutils literal"><span class="pre">tools</span></code> ，而且照<code class="docutils literal"><span class="pre">INSTALL</span></code>做</li>
+<li>入去<code class="docutils literal"><span class="pre">src</span></code> ，而且照<code class="docutils literal"><span class="pre">INSTALL</span></code>做</li>
+</ol>
+</li>
+<li>走範例<ol>
+<li>入去<code class="docutils literal"><span class="pre">egs/yesno/s5</span></code>，照伊的<code class="docutils literal"><span class="pre">README</span></code>指示<ul>
+<li><code class="docutils literal"><span class="pre">bash</span> <span class="pre">run.sh</span></code>，幾分鐘內程式會走了</li>
+</ul>
+</li>
+<li>入去<code class="docutils literal"><span class="pre">egs/vystadial_en/s5</span></code>，照伊的<code class="docutils literal"><span class="pre">README</span></code>指示<ul>
+<li>照家己的需要改<code class="docutils literal"><span class="pre">cmd.sh</span></code></li>
+<li><code class="docutils literal"><span class="pre">bash</span> <span class="pre">run.sh</span></code><ul>
+<li>CPU時間需要5000~6000分鐘</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code class="docutils literal"><span class="pre">egs/voxforge/s5</span></code>，走<code class="docutils literal"><span class="pre">bash</span> <span class="pre">getdata.sh</span></code>佮<code class="docutils literal"><span class="pre">time</span> <span class="pre">bash</span> <span class="pre">-x</span> <span class="pre">run.sh</span></code><ul>
+<li>純CPU時間<ul>
+<li><code class="docutils literal"><span class="pre">real</span> <span class="pre">10081m51.386s</span></code>、<code class="docutils literal"><span class="pre">user</span> <span class="pre">32927m9.961s</span></code>、<code class="docutils literal"><span class="pre">sys</span> <span class="pre">294m11.191s</span></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>看<a class="reference external" href="http://kaldi-asr.org/doc/tutorial.html">導覽教學</a><ul>
+<li>伊的例，語料愛錢，所以提第三步的<code class="docutils literal"><span class="pre">yesno</span></code>佮<code class="docutils literal"><span class="pre">vystadial_en</span></code>比較</li>
+<li><code class="docutils literal"><span class="pre">vystadial_en</span></code>的<code class="docutils literal"><span class="pre">data</span></code>資料夾，叫做<code class="docutils literal"><span class="pre">lang_prep</span></code></li>
+</ul>
+</li>
+<li>照<a class="reference external" href="http://kaldi-asr.org/doc/data_prep.html">資料準備</a><ul>
+<li>一步一步做</li>
+</ul>
+</li>
+<li>修改範例<ul>
+<li><a class="reference external" href="https://github.com/sih4sing5hong5/kaldi/tree/taiwanese/egs/taiwanese/s5c">taiwanese</a><ul>
+<li>自<code class="docutils literal"><span class="pre">swbd</span></code>改的</li>
+<li>參考<code class="docutils literal"><span class="pre">timit</span></code>佮<code class="docutils literal"><span class="pre">swbd</span></code>的<code class="docutils literal"><span class="pre">sgmm2</span></code></li>
+</ul>
+</li>
+<li><code class="docutils literal"><span class="pre">egs/voxforge/s5/</span></code>的<code class="docutils literal"><span class="pre">run.sh</span></code>上清氣，較好看</li>
+<li><code class="docutils literal"><span class="pre">iban</span></code> <code class="docutils literal"><span class="pre">sgmm2</span></code>的<code class="docutils literal"><span class="pre">rescore</span></code>佮<code class="docutils literal"><span class="pre">big</span> <span class="pre">lm</span></code><ul>
+<li>用細lm來<code class="docutils literal"><span class="pre">decode</span></code>才閣用大lm來<code class="docutils literal"><span class="pre">rescore</span></code>(15.84%)，不如直接用大lm來<code class="docutils literal"><span class="pre">decode</span></code>(15.32%)</li>
+</ul>
+</li>
+<li><code class="docutils literal"><span class="pre">voxforge</span></code>有<code class="docutils literal"><span class="pre">mpe</span></code></li>
+<li><code class="docutils literal"><span class="pre">nnet3</span></code>：<code class="docutils literal"><span class="pre">wsj</span></code>、<code class="docutils literal"><span class="pre">swbd</span></code></li>
+<li><code class="docutils literal"><span class="pre">wsj/s5/local/run_sgmm2.sh</span></code> <code class="docutils literal"><span class="pre">quinphone</span></code></li>
+<li>簡單瞭解各個做法：<a class="reference external" href="http://www.danielpovey.com/files/2013_interspeech_dnn.pdf">2013_interspeech_dnn</a></li>
+</ul>
+</li>
+</ol>
+</div>
 <div class="section" id="">
-<span id="id2"></span><h3>套件準備<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-bash"><div class="highlight"><pre>sudo apt-get install -y libc6-dev-i386 linux-libc-dev gcc-multilib libx11-dev libx11-dev:i386
+<span id="id2"></span><h3>其他參考文章<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h3>
+<ul class="simple">
+<li>GPU對decoding較無效果<ul>
+<li>https://groups.google.com/d/msg/kaldi-help/cXUxiXDAJUs/fnFGFSTnBgAJ</li>
+<li>https://groups.google.com/forum/#!topic/kaldi-help/Zujqc0ishQU</li>
+</ul>
+</li>
+<li>jobs佮thread設定<ul>
+<li>https://groups.google.com/forum/#!msg/kaldi-help/kTDwa48u2PM/M5qMYGPVCwAJ</li>
+</ul>
+</li>
+<li>globalphone model<ul>
+<li>https://groups.google.com/forum/#!msg/kaldi-help/ifUe6IuGdFc/PkF5j1atCwAJ</li>
+</ul>
+</li>
+<li>rnnlm<ul>
+<li>https://groups.google.com/forum/#!topic/kaldi-help/018JjvRBz-M</li>
+<li>https://groups.google.com/forum/#!msg/kaldi-help/csJrMoGwEpU/gZQDveHLCwAJ</li>
+</ul>
+</li>
+<li>acwt參數<ul>
+<li>https://groups.google.com/forum/#!topic/kaldi-developers/IBhn9ndmjQI</li>
+</ul>
+</li>
+<li>入門文章<ul>
+<li>https://groups.google.com/forum/#!msg/kaldi-help/3LBSzmploC0/xDPK2vuXDgAJ</li>
+<li>https://groups.google.com/d/msg/kaldi-help/3LBSzmploC0/ff35yEUqEgAJ</li>
+</ul>
+</li>
+<li>lattice<ul>
+<li>https://groups.google.com/forum/#!topic/kaldi-help/cXX7y3Hvf3w</li>
+<li>https://groups.google.com/forum/#!topic/kaldi-help/QqUQoX816GE</li>
+<li>https://groups.google.com/forum/#!topic/kaldi-help/UiVD5WPA8fI</li>
+</ul>
+</li>
+<li>錄音相關<ul>
+<li>https://groups.google.com/forum/#!msg/kaldi-help/gBRw7svAQHs/39MuJdu3AAAJ</li>
+</ul>
+</li>
+<li>猶未整理<ul>
+<li>https://sourceforge.net/p/kaldi/discussion/1355348/thread/c99fe7a6/?limit=25</li>
+<li>http://vpanayotov.blogspot.tw/2012/06/kaldi-decoding-graph-construction.html</li>
+<li>https://sourceforge.net/p/kaldi/discussion/1355347/thread/33098413/?page=0</li>
+<li>https://sourceforge.net/p/kaldi/discussion/1355348/thread/476965d5/</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="">
+<span id="id3"></span><h3>訓練語料準備<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h3>
+<p>2016/11/12唐鳳的建議</p>
+<div class="section" id="">
+<span id="id4"></span><h4>音檔編碼格式<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h4>
+<ul class="simple">
+<li>flac</li>
+<li>opus<ul>
+<li>watson IBM在用</li>
+</ul>
+</li>
+<li>aac</li>
+</ul>
+<p>訊號完整度（對辨識的影響）：<code class="docutils literal"><span class="pre">flac</span></code>&gt;<code class="docutils literal"><span class="pre">opus</span></code>&gt;<code class="docutils literal"><span class="pre">aac</span></code></p>
+</div>
+<div class="section" id="">
+<span id="id5"></span><h4>錄音流程<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h4>
+<ol class="simple">
+<li>準備萬字表，而且準備做一段一段。一段的長度，是一般人唸了需要啉茶歇睏的長度</li>
+<li>揣發音人，一直予伊唸，一段存一个音檔</li>
+<li>轉去實驗室，共音檔佮萬字表alignment</li>
+</ol>
+</div>
+<div class="section" id="">
+<span id="id6"></span><h4>補錄語料<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h4>
+<p>若是拄著辨識錯誤，袂共這个音檔當做訓練語料，會分析是佗位錯誤，若是是腔口的問題，就去錄彼腔口的聲音</p>
+</div>
+</div>
+<div class="section" id="">
+<span id="id7"></span><h3>訓練語料過濾<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h3>
+<p>若是訓練語料無夠清氣，會當用<code class="docutils literal"><span class="pre">steps/cleanup/clean_and_segment_data.sh</span></code></p>
+<div class="section" id="">
+<span id="id8"></span><h4>會切音檔<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h4>
+<div class="highlight-default"><div class="highlight"><pre><span></span>tong0000292-0002921無註明-ku0002921 因-為｜in1-ui7 原-地｜guan5-te7 有｜u7 水｜tsui2 go2｜go2 到｜kah8 水-源｜tsui2-guan5
+tong0000292-0002921無註明-ku0002921-1 因-為｜in1-ui7 原-地｜guan5-te7 有｜u7
+tong0000292-0002921無註明-ku0002921-2 水-源｜tsui2-guan5
+
+tong0000292-0002921無註明-ku0002921 tong0000292 7082.32000000001 7085.32800000001
+tong0000292-0002921無註明-ku0002921-1 tong0000292 7082.32 7083.63
+tong0000292-0002921無註明-ku0002921-2 tong0000292 7084.4 7085.33
+</pre></div>
+</div>
+<p>雖然原本的音檔就誠好矣，毋過新的兩个音檔切了閣袂bai2</p>
+</div>
+<div class="section" id="">
+<span id="id9"></span><h4>調時間<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h4>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">tong0016578</span><span class="o">-</span><span class="mi">0000000</span><span class="n">無註明</span><span class="o">-</span><span class="n">ku0000000</span> <span class="n">tong0016578</span> <span class="mi">0</span> <span class="mf">2.115918367346939</span>
+<span class="n">tong0016578</span><span class="o">-</span><span class="mi">0000000</span><span class="n">無註明</span><span class="o">-</span><span class="n">ku0000000</span><span class="o">-</span><span class="mi">1</span> <span class="n">tong0016578</span> <span class="mf">0.74</span> <span class="mf">1.905</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>毋過會切毋著 https://github.com/sih4sing5hong5/tai5-uan5_gian5-gi2_hok8-bu7/issues/134</li>
+</ul>
+</div>
+<div class="section" id="unk">
+<span id="unk"></span><h4>加<code class="docutils literal"><span class="pre">&lt;UNK&gt;</span></code><a class="headerlink" href="#unk" title="本標題的永久連結">¶</a></h4>
+<div class="highlight-default"><div class="highlight"><pre><span></span>tong0000004-0000002朝森-ku0000604 講-了｜kong2-liau2 誠-好｜tsiann5-ho2
+tong0000004-0000002朝森-ku0000604-1 &lt;UNK&gt; 講-了｜kong2-liau2 誠-好｜tsiann5-ho2
+
+tong0000027-0000011阿婆-ku0000012 曷｜ah8 是｜si7 按-怎｜an2-nua2 今-仔-日｜kin1-a2-jit8 是｜si7 啥-物｜siann2-mih8 日-子｜jit8-tsi2 按-呢｜an2-ne1 tsiah10｜tsiah10 食｜tsiah8 好｜ho2
+tong0000027-0000011阿婆-ku0000012-1 &lt;UNK&gt; 啥-物｜siann2-mih8 日-子｜jit8-tsi2 按-呢｜an2-ne1 tsiah10｜tsiah10 食｜tsiah8 好｜ho2
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">tong0000004-0000002朝森-ku0000604</span></code>頭前有華語<code class="docutils literal"><span class="pre">學長</span></code></p>
+</div>
+<div class="section" id="">
+<span id="id10"></span><h4>綜合三个<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h4>
+<div class="highlight-default"><div class="highlight"><pre><span></span>tong0000292-0003393無註明-ku0003393 佇｜ti7 茫-茫｜bang5-bang5 的｜e5 人｜lang5 先｜sing1 路-途｜loo7-too5
+tong0000292-0003393無註明-ku0003393-1 佇｜ti7 茫-茫｜bang5-bang5 的｜e5
+tong0000292-0003393無註明-ku0003393-2 &lt;UNK&gt; 先｜sing1 路-途｜loo7-too5
+
+tong0000292-0003393無註明-ku0003393 tong0000292 8147.24800000001 8150.0480000000
+tong0000292-0003393無註明-ku0003393-1 tong0000292 8147.25 8148.62
+tong0000292-0003393無註明-ku0003393-2 tong0000292 8148.88 8150.04
+</pre></div>
+</div>
+<p>∵是<code class="docutils literal"><span class="pre">jin5</span></code>毋是<code class="docutils literal"><span class="pre">lang5</span></code></p>
+</div>
+</div>
+<div class="section" id="taiwanese-study">
+<span id="taiwanese-study"></span><h3>Taiwanese Study討論紀錄<a class="headerlink" href="#taiwanese-study" title="本標題的永久連結">¶</a></h3>
+<p>這區是高明達老師、呂仁園老師、呂道誠學長佮薛丞宏的討論紀錄</p>
+<div class="section" id="">
+<span id="id11"></span><h4>臺語文本格式<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h4>
+<p>臺語有<code class="docutils literal"><span class="pre">漢字</span></code>佮<code class="docutils literal"><span class="pre">臺羅</span></code>兩種表示法，華語免標注音，是因為有漢字就有法度標注音。</p>
+<p>羅馬字大部份攏有標聲調，而且是標本調，臺語的漢字佮羅馬字才整合無偌久，實務上有需要兩个做伙做</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>伊｜i1 攏-是｜long2-si7 恬-恬-仔｜tiam7-tiam7-a2 搰-力｜kut4-lat4 去-做｜khi3-tso7
+</pre></div>
+</div>
+<p>我佇<code class="docutils literal"><span class="pre">lexcicon.txt</span></code>辭典內底共in拆開</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>伊｜i1 ʔ- i1
+攏-是｜long2-si7 l- o2 ŋ2 s- i7
+恬-恬-仔｜tiam7-tiam7-a2 t- i7 a7 m7 t- i7 a7 m7 ʔ- a2
+…
+</pre></div>
+</div>
+<p>嘛因為kaldi有共辭典獨立出來，變調只要改<code class="docutils literal"><span class="pre">lexcicon.txt</span></code>就好</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>伊｜i1 ʔ- i1 #無變調
+伊｜i1 ʔ- i7 #變調
+攏-是｜long2-si7 l- o1 ŋ1 s- i7 #頭字變，尾字無變
+攏-是｜long2-si7 l- o1 ŋ1 s- i3 #頭字變，尾字變調
+</pre></div>
+</div>
+<p>lm的文本，大部份的原始來源攏是漢羅
+轉做<code class="docutils literal"><span class="pre">攏-是｜long2-si7</span></code>這種分詞格式是實務上較會通</p>
+</div>
+<div class="section" id="">
+<span id="id12"></span><h4>語音分析<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h4>
+<p><code class="docutils literal"><span class="pre">pang</span></code>佇辭典內底，會當照無仝的單位切</p>
+<ol class="simple">
+<li>聲韻會當拆成<code class="docutils literal"><span class="pre">p</span></code>、<code class="docutils literal"><span class="pre">ang</span></code></li>
+<li>音素會拆成<code class="docutils literal"><span class="pre">p</span></code>、<code class="docutils literal"><span class="pre">a</span></code>、<code class="docutils literal"><span class="pre">ng</span></code></li>
+</ol>
+<p>華語之前Microsoft好像有用音素做，但近幾年大家都是用聲韻</p>
+</div>
+<div class="section" id="">
+<span id="id13"></span><h4>語言模型分析<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h4>
+<div class="section" id="perplexity">
+<span id="perplexity"></span><h5>perplexity<a class="headerlink" href="#perplexity" title="本標題的永久連結">¶</a></h5>
+<p>臺語帶聲調的音節，應是 2500 左右。
+詳細數字要看採用的文字語料中【相異】的語言單位之數量。</p>
+<p>辨識單位 |Ngram| Perplexity
+&#8212;&#8212;&#8212;|&#8212;&#8211;| &#8212;&#8212;&#8212;-
+文(Ch) | 0g | 3426
+文(Ch) | 7g | 37
+音(Ts) | 0g | 2441
+音(Ts) | 7g | 45</p>
+<p>以上是TwESC01 (朗讀140篇)10萬字左右做出來的結果。</p>
+<p>其中 3426 恰好是10萬字中，相異的漢羅字數；2441恰好是相異的聲調音節數。</p>
+</div>
+<div class="section" id="">
+<span id="id14"></span><h5>案例1<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h5>
+<p>試perplexity的結果是這樣：</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ ngram -lm data/local/lm/語言模型.lm -ppl text_tshi3.txt
+data/local/lm/語言模型.lm: line 7: warning: non-zero probability for &lt;unk&gt; in closed-vocabulary LM
+file text_tshi3.txt: 277 sentences, 1135 words, 0 OOVs
+0 zeroprobs, logprob= -5321.24 ppl= 5869.24 ppl1= 48788.2
+</pre></div>
+</div>
+<p>通常英文的<code class="docutils literal"><span class="pre">ppl</span></code>在<code class="docutils literal"><span class="pre">100</span></code>左右，華語大約在<code class="docutils literal"><span class="pre">200</span></code>。<code class="docutils literal"><span class="pre">5000</span></code>太高了</p>
+</div>
+</div>
+</div>
+<div class="section" id="">
+<span id="id15"></span><h3>分析辨識問題<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h3>
+<p>愛判斷是聲學模型的問題無，所以先共語言模型的影響提掉</p>
+<div class="section" id="">
+<span id="id16"></span><h4>實驗1<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h4>
+<p>通常中文<code class="docutils literal"><span class="pre">inside</span> <span class="pre">3</span> <span class="pre">gram</span> <span class="pre">語言模型</span></code>配合<code class="docutils literal"><span class="pre">outside的音檔</span></code>，
+<code class="docutils literal"><span class="pre">Character</span> <span class="pre">error</span> <span class="pre">rate</span></code>大約在5%。</p>
+</div>
+<div class="section" id="">
+<span id="id17"></span><h4>實驗2<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h4>
+<p>用 去聲調的音節 做成 1gram 的語言模型，
+看看辨識結果如何，
+應該正確率要差不多 50-60之間。</p>
+</div>
+</div>
+</div>
+<div class="section" id="htk">
+<span id="htk"></span><h2>HTK<a class="headerlink" href="#htk" title="本標題的永久連結">¶</a></h2>
+<p>臺灣言語工具捌共<a class="reference external" href="http://htk.eng.cam.ac.uk/">HTK</a>的功能包起來，毋過這馬無按算閣維護辨識的部份矣，請看<a class="reference external" href="https://github.com/sih4sing5hong5/tai5-uan5_gian5-gi2_hok8-bu7/pull/113">原因</a>。</p>
+<div class="section" id="">
+<span id="id18"></span><h3>套件準備<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h3>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo apt-get install -y libc6-dev-i386 linux-libc-dev gcc-multilib libx11-dev libx11-dev:i386
 </pre></div>
 </div>
 </div>
 <div class="section" id="">
-<span id="id3"></span><h3>安裝<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h3>
+<span id="id19"></span><h3>安裝<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h3>
 <p>執行<code class="docutils literal"><span class="pre">python</span></code>，而且輸入</p>
-<div class="highlight-python3"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">臺灣言語工具.語音辨識.HTK工具.安裝HTK語音辨識程式</span> <span class="k">import</span> <span class="n">安裝HTK語音辨識程式</span>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">臺灣言語工具.語音辨識.HTK工具.安裝HTK語音辨識程式</span> <span class="k">import</span> <span class="n">安裝HTK語音辨識程式</span>
 <span class="n">安裝HTK語音辨識程式</span><span class="o">.</span><span class="n">安裝htk</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="">
-<span id="id4"></span><h3>標文本的時間<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h3>
+<span id="id20"></span><h3>標文本的時間<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h3>
 <p>若是有音檔佮對應的文本音標，會使標出逐個語詞佇音檔的時間</p>
-<div class="highlight-python3"><div class="highlight"><pre><span class="n">對齊標仔目錄</span> <span class="o">=</span> <span class="n">HTK辨識模型訓練</span><span class="o">.</span><span class="n">加短恬閣對齊</span><span class="p">(</span>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">對齊標仔目錄</span> <span class="o">=</span> <span class="n">HTK辨識模型訓練</span><span class="o">.</span><span class="n">加短恬閣對齊</span><span class="p">(</span>
     <span class="n">音檔目錄</span><span class="p">,</span> <span class="n">標仔目錄</span><span class="p">,</span> <span class="n">音節聲韻對照檔</span><span class="p">,</span> <span class="n">模型暫存目錄</span>
 <span class="p">)</span>
 </pre></div>
 </div>
 <div class="section" id="">
-<span id="id5"></span><h4>標仔格式說明<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h4>
+<span id="id21"></span><h4>標仔格式說明<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h4>
 <p>以<code class="docutils literal"><span class="pre">試驗/語音辨識/語音語料/labels</span></code>的資料為例
 標仔<code class="docutils literal"><span class="pre">刀石</span></code>應該生做，其中<code class="docutils literal"><span class="pre">sil</span></code>表示音檔前後有一段空白無聲</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">sil</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sil</span>
 <span class="n">to</span>
 <span class="n">tsioh</span>
 <span class="n">sil</span>
@@ -229,15 +507,15 @@
 </div>
 </div>
 <div class="section" id="">
-<span id="id6"></span><h4>音檔格式說明<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h4>
+<span id="id22"></span><h4>音檔格式說明<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h4>
 <p>以<code class="docutils literal"><span class="pre">試驗/語音辨識/語音語料/wav</span></code>的資料為例
 愛準備對應標仔檔名的wav檔案</p>
 </div>
 <div class="section" id="">
-<span id="id7"></span><h4>音節聲韻對照檔格式說明<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h4>
+<span id="id23"></span><h4>音節聲韻對照檔格式說明<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h4>
 <p>這個檔案的目的是予HTK會當用聲韻，閣較細的單位來辨識，增加準度</p>
 <p>以<code class="docutils literal"><span class="pre">試驗/語音辨識/語音語料/聲韻對照.dict</span></code>的資料為例</p>
-<div class="highlight-python"><div class="highlight"><pre>a   ʔ a
+<div class="highlight-default"><div class="highlight"><pre><span></span>a   ʔ a
 ah  ʔ aʔ
 ai  ʔ ai
 aih ʔ aiʔ
@@ -249,57 +527,45 @@ aih ʔ aiʔ
 以此類推…</p>
 </div>
 <div class="section" id="">
-<span id="id8"></span><h4>輸出標仔格式<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h4>
+<span id="id24"></span><h4>輸出標仔格式<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h4>
 <p>走面頂的程式了，會得著有標時間的標仔檔</p>
-<div class="highlight-python"><div class="highlight"><pre>0 2100000 sil
-2100000 5500000 to
-5500000 9300000 tsioh
-9300000 11100000 sil
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="mi">0</span> <span class="mi">2100000</span> <span class="n">sil</span>
+<span class="mi">2100000</span> <span class="mi">5500000</span> <span class="n">to</span>
+<span class="mi">5500000</span> <span class="mi">9300000</span> <span class="n">tsioh</span>
+<span class="mi">9300000</span> <span class="mi">11100000</span> <span class="n">sil</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="">
-<span id="id9"></span><h3>辨識任意音檔<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python3"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">臺灣言語工具.語音辨識.HTK工具.HTK辨識模型訓練</span> <span class="k">import</span> <span class="n">HTK辨識模型訓練</span>
+<span id="id25"></span><h3>辨識任意音檔<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h3>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">臺灣言語工具.語音辨識.HTK工具.HTK辨識模型訓練</span> <span class="k">import</span> <span class="n">HTK辨識模型訓練</span>
 <span class="kn">from</span> <span class="nn">臺灣言語工具.語音辨識.HTK工具.HTK語料處理</span> <span class="k">import</span> <span class="n">HTK語料處理</span>
 <span class="kn">from</span> <span class="nn">臺灣言語工具.語音辨識.HTK工具.HTK辨識模型</span> <span class="k">import</span> <span class="n">HTK辨識模型</span>
-<span class="c"># 訓練模型</span>
+<span class="c1"># 訓練模型</span>
 <span class="n">三連音辨識模型</span> <span class="o">=</span> <span class="n">HTK辨識模型訓練</span><span class="o">.</span><span class="n">訓練三連音辨識模型</span><span class="p">(</span>
     <span class="n">音檔目錄</span><span class="p">,</span> <span class="n">標仔目錄</span><span class="p">,</span> <span class="n">音節聲韻對照檔</span><span class="p">,</span> <span class="n">模型暫存目錄</span>
 <span class="p">)</span>
-<span class="c"># 辨識音檔</span>
+<span class="c1"># 辨識音檔</span>
 <span class="n">特徵檔</span> <span class="o">=</span> <span class="n">HTK語料處理</span><span class="o">.</span><span class="n">產生特徵檔</span><span class="p">(</span><span class="n">音檔所在</span><span class="p">,</span> <span class="n">暫存目錄</span><span class="p">)</span>
 <span class="n">三連音辨識模型</span><span class="o">.</span><span class="n">辨識音節</span><span class="p">(</span><span class="n">特徵檔</span><span class="p">,</span> <span class="n">結果暫存目錄</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
-<span class="c"># 儲存模型、載入</span>
+<span class="c1"># 儲存模型、載入</span>
 <span class="n">三連音辨識模型</span><span class="o">.</span><span class="n">存資料佇</span><span class="p">(</span><span class="n">模型目錄</span><span class="p">)</span>
 <span class="n">三連音辨識模型</span> <span class="o">=</span> <span class="n">HTK辨識模型</span><span class="p">(</span><span class="n">模型目錄</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="">
-<span id="id10"></span><h3>合成聲音<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h3>
-<p>├── 語音合成
-│&nbsp;&nbsp; ├── HTS工具
-│&nbsp;&nbsp; │&nbsp;&nbsp; ├── HTS合成模型.py
-│&nbsp;&nbsp; │&nbsp;&nbsp; └── <strong>init</strong>.py
-│&nbsp;&nbsp; ├── 生決策樹仔問題.py
-│&nbsp;&nbsp; ├── 語音標仔轉換.py
-│&nbsp;&nbsp; ├── 調音盒.py
-│&nbsp;&nbsp; └── 閩南語變調.py</p>
-</div>
-</div>
 <div class="section" id="htk">
-<span id="htk"></span><h2>HTK原理<a class="headerlink" href="#htk" title="Permalink to this headline">¶</a></h2>
+<span id="id26"></span><h3>HTK原理<a class="headerlink" href="#htk" title="本標題的永久連結">¶</a></h3>
 <p>HTK是揣出語音佮音標的對應，
 共語音轉做一个一个MFCC聲學特徵，
 主要是用高斯混合模型去判斷是佇一个音標。</p>
 <p>用隱性馬可夫模型（HMM）來模擬語音狀態的變化，
 解決語音訊號連續閣無固定長度的問題。</p>
 <div class="section" id="">
-<span id="id11"></span><h3>模型訓練流程<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h3>
+<span id="id27"></span><h4>模型訓練流程<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h4>
 <div class="section" id="">
-<span id="id12"></span><h4>一般模型<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h4>
+<span id="id28"></span><h5>一般模型<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h5>
 <ol class="simple">
 <li>建立初步模型</li>
 </ol>
@@ -314,7 +580,7 @@ aih ʔ aiʔ
 </ul>
 </div>
 <div class="section" id="">
-<span id="id13"></span><h4>加短恬模型<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h4>
+<span id="id29"></span><h5>加短恬模型<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h5>
 <p>有的音節中央可能無聲音，所以佇中央加<code class="docutils literal"><span class="pre">sp短恬</span></code>，增加辨識度</p>
 <ol class="simple">
 <li>建立一般模型</li>
@@ -326,7 +592,7 @@ aih ʔ aiʔ
 </ol>
 </div>
 <div class="section" id="">
-<span id="id14"></span><h4>三連音模型<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h4>
+<span id="id30"></span><h5>三連音模型<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h5>
 <p>原本的模型攏是考慮<code class="docutils literal"><span class="pre">音</span></code>本身（mono-phone）的參數，
 若是為著提懸辨識度，考慮音的前後音（Context-Sensitive），
 <code class="docutils literal"><span class="pre">前-音-後</span></code>三連音（tri-phone）。
@@ -346,9 +612,10 @@ aih ʔ aiʔ
 </ol>
 </div>
 <div class="section" id="">
-<span id="id15"></span><h4>其他<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h4>
+<span id="id31"></span><h5>其他<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h5>
 <p>佇<code class="docutils literal"><span class="pre">HTK辨識模型訓練.py</span></code>內底，會當看著訓練模型了，
 閣會<code class="docutils literal"><span class="pre">加混合數</span></code>，是予高斯混合模型有較濟的平均點，增加辨識度。</p>
+</div>
 </div>
 </div>
 </div>

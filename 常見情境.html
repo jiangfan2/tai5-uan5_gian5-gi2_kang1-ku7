@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>常見情境 &mdash; 臺灣言語工具 0.6.11 documentation</title>
+  <title>常見情境 &mdash; 臺灣言語工具 0.6.11 說明文件</title>
   
 
   
@@ -30,7 +30,10 @@
   
 
   
-    <link rel="top" title="臺灣言語工具 0.6.11 documentation" href="index.html"/>
+        <link rel="index" title="索引"
+              href="genindex.html"/>
+        <link rel="search" title="搜尋" href="search.html"/>
+    <link rel="top" title="臺灣言語工具 0.6.11 說明文件" href="index.html"/>
         <link rel="next" title="機器翻譯（Machine Translation）" href="機器翻譯.html"/>
         <link rel="prev" title="基本物件" href="基本物件.html"/> 
 
@@ -85,7 +88,7 @@
 <li class="toctree-l1"><a class="reference internal" href="介紹.html">介紹</a></li>
 <li class="toctree-l1"><a class="reference internal" href="安裝.html">安裝</a></li>
 <li class="toctree-l1"><a class="reference internal" href="基本物件.html">基本物件</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">常見情境</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">常見情境</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#">白話字轉臺羅</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#">通用拼音轉臺羅拼音</a></li>
 </ul>
@@ -132,7 +135,7 @@
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -144,7 +147,7 @@
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="_sources/常見情境.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/常見情境.md.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -155,11 +158,11 @@
            <div itemprop="articleBody">
             
   <div class="section" id="">
-<span id="id1"></span><h1>常見情境<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h1>
+<span id="id1"></span><h1>常見情境<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h1>
 <p>建議先簡單看一下<code class="docutils literal"><span class="pre">基本物件</span></code>才閣來看～～</p>
 <div class="section" id="">
-<span id="id2"></span><h2>白話字轉臺羅<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python3"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">臺灣言語工具.解析整理.羅馬音仕上げ</span> <span class="k">import</span> <span class="n">羅馬音仕上げ</span>
+<span id="id2"></span><h2>白話字轉臺羅<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h2>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">臺灣言語工具.解析整理.羅馬音仕上げ</span> <span class="k">import</span> <span class="n">羅馬音仕上げ</span>
 <span class="kn">from</span> <span class="nn">臺灣言語工具.解析整理.拆文分析器</span> <span class="k">import</span> <span class="n">拆文分析器</span>
 <span class="kn">from</span> <span class="nn">臺灣言語工具.解析整理.文章粗胚</span> <span class="k">import</span> <span class="n">文章粗胚</span>
 <span class="kn">from</span> <span class="nn">臺灣言語工具.音標系統.閩南語.臺灣閩南語羅馬字拼音相容教會羅馬字音標</span> <span class="k">import</span> <span class="n">臺灣閩南語羅馬字拼音相容教會羅馬字音標</span>
@@ -167,38 +170,38 @@
 <span class="kn">from</span> <span class="nn">臺灣言語工具.基本物件.公用變數</span> <span class="k">import</span> <span class="n">分字符號</span>
 <span class="kn">from</span> <span class="nn">臺灣言語工具.基本物件.公用變數</span> <span class="k">import</span> <span class="n">分詞符號</span>
 
-<span class="n">白話字</span> <span class="o">=</span> <span class="s">&#39;pe̍h-oē-jī tī chia&#39;</span>
+<span class="n">白話字</span> <span class="o">=</span> <span class="s1">&#39;pe̍h-oē-jī tī chia&#39;</span>
 <span class="n">臺羅</span> <span class="o">=</span> <span class="n">羅馬音仕上げ</span><span class="o">.</span><span class="n">輕聲佮外來語</span><span class="p">(</span>
     <span class="n">拆文分析器</span>
-    <span class="o">.</span><span class="n">建立句物件</span><span class="p">(</span><span class="n">文章粗胚</span><span class="o">.</span><span class="n">建立物件語句前處理減號</span><span class="p">(</span><span class="n">臺灣閩南語羅馬字拼音相容教會羅馬字音標</span><span class="p">,</span> <span class="n">白話字</span><span class="p">))</span>  <span class="c"># 先預處理減號</span>
-    <span class="o">.</span><span class="n">轉音</span><span class="p">(</span><span class="n">臺灣閩南語羅馬字拼音相容教會羅馬字音標</span><span class="p">)</span>  <span class="c"># 先全部轉做臺羅數字調</span>
-    <span class="o">.</span><span class="n">轉音</span><span class="p">(</span><span class="n">臺灣閩南語羅馬字拼音</span><span class="p">,</span> <span class="s">&#39;轉閏號調&#39;</span><span class="p">)</span>  <span class="c"># 才閣轉做臺羅閏號調，調號佇韻面頂</span>
-    <span class="o">.</span><span class="n">看型</span><span class="p">(</span><span class="n">物件分字符號</span><span class="o">=</span><span class="n">分字符號</span><span class="p">,</span> <span class="n">物件分詞符號</span><span class="o">=</span><span class="n">分詞符號</span><span class="p">)</span>  <span class="c"># 因為毋是對齊物件，所以愛用`看型`</span>
+    <span class="o">.</span><span class="n">建立句物件</span><span class="p">(</span><span class="n">文章粗胚</span><span class="o">.</span><span class="n">建立物件語句前處理減號</span><span class="p">(</span><span class="n">臺灣閩南語羅馬字拼音相容教會羅馬字音標</span><span class="p">,</span> <span class="n">白話字</span><span class="p">))</span>  <span class="c1"># 先預處理減號</span>
+    <span class="o">.</span><span class="n">轉音</span><span class="p">(</span><span class="n">臺灣閩南語羅馬字拼音相容教會羅馬字音標</span><span class="p">)</span>  <span class="c1"># 先全部轉做臺羅數字調</span>
+    <span class="o">.</span><span class="n">轉音</span><span class="p">(</span><span class="n">臺灣閩南語羅馬字拼音</span><span class="p">,</span> <span class="s1">&#39;轉閏號調&#39;</span><span class="p">)</span>  <span class="c1"># 才閣轉做臺羅閏號調，調號佇韻面頂</span>
+    <span class="o">.</span><span class="n">看型</span><span class="p">(</span><span class="n">物件分字符號</span><span class="o">=</span><span class="n">分字符號</span><span class="p">,</span> <span class="n">物件分詞符號</span><span class="o">=</span><span class="n">分詞符號</span><span class="p">)</span>  <span class="c1"># 因為毋是對齊物件，所以愛用`看型`</span>
 <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">臺羅</span><span class="p">)</span>  <span class="c"># pe̍h-uē-jī tī tsia</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">臺羅</span><span class="p">)</span>  <span class="c1"># pe̍h-uē-jī tī tsia</span>
 </pre></div>
 </div>
 <div class="section" id="">
-<span id="id3"></span><h3>通用拼音轉臺羅拼音<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python3"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">臺灣言語工具.解析整理.拆文分析器</span> <span class="k">import</span> <span class="n">拆文分析器</span>
+<span id="id3"></span><h3>通用拼音轉臺羅拼音<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h3>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">臺灣言語工具.解析整理.拆文分析器</span> <span class="k">import</span> <span class="n">拆文分析器</span>
 <span class="kn">from</span> <span class="nn">臺灣言語工具.音標系統.閩南語.通用拼音音標</span> <span class="k">import</span> <span class="n">通用拼音音標</span>
 
-<span class="n">通用組物件</span> <span class="o">=</span> <span class="n">拆文分析器</span><span class="o">.</span><span class="n">對齊組物件</span><span class="p">(</span><span class="s">&#39;臺語語言來講古&#39;</span><span class="p">,</span> <span class="s">&#39;dai5-qi4 qi4-qen5 lai5 gong2-go4&#39;</span><span class="p">)</span>
-<span class="n">臺羅組物件</span> <span class="o">=</span> <span class="n">通用組物件</span><span class="o">.</span><span class="n">轉音</span><span class="p">(</span><span class="n">通用拼音音標</span><span class="p">)</span>  <span class="c"># 會轉成臺羅數字調音標</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">臺羅組物件</span><span class="o">.</span><span class="n">看型</span><span class="p">())</span>  <span class="c"># 臺語語言來講古</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">臺羅組物件</span><span class="o">.</span><span class="n">看音</span><span class="p">())</span>  <span class="c"># tai5-gi2 gi2-gian5 lai5 kong7-koo2</span>
+<span class="n">通用組物件</span> <span class="o">=</span> <span class="n">拆文分析器</span><span class="o">.</span><span class="n">對齊組物件</span><span class="p">(</span><span class="s1">&#39;臺語語言來講古&#39;</span><span class="p">,</span> <span class="s1">&#39;dai5-qi4 qi4-qen5 lai5 gong2-go4&#39;</span><span class="p">)</span>
+<span class="n">臺羅組物件</span> <span class="o">=</span> <span class="n">通用組物件</span><span class="o">.</span><span class="n">轉音</span><span class="p">(</span><span class="n">通用拼音音標</span><span class="p">)</span>  <span class="c1"># 會轉成臺羅數字調音標</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">臺羅組物件</span><span class="o">.</span><span class="n">看型</span><span class="p">())</span>  <span class="c1"># 臺語語言來講古</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">臺羅組物件</span><span class="o">.</span><span class="n">看音</span><span class="p">())</span>  <span class="c1"># tai5-gi2 gi2-gian5 lai5 kong7-koo2</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="">
-<span id="id4"></span><h2>檢查音標有合法無<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python"><div class="highlight"><pre>from 臺灣言語工具.音標系統.閩南語.臺灣閩南語羅馬字拼音相容教會羅馬字音標 import 臺灣閩南語羅馬字拼音相容教會羅馬字音標
+<span id="id4"></span><h2>檢查音標有合法無<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">臺灣言語工具.音標系統.閩南語.臺灣閩南語羅馬字拼音相容教會羅馬字音標</span> <span class="k">import</span> <span class="n">臺灣閩南語羅馬字拼音相容教會羅馬字音標</span>
 
-音標 = 臺灣閩南語羅馬字拼音相容教會羅馬字音標(&#39;pe̍h&#39;)
-print(音標.音標)  # peh8
-音標 = 臺灣閩南語羅馬字拼音相容教會羅馬字音標(&#39;piet&#39;)
-print(音標.音標)  # None
+<span class="n">音標</span> <span class="o">=</span> <span class="n">臺灣閩南語羅馬字拼音相容教會羅馬字音標</span><span class="p">(</span><span class="s1">&#39;pe̍h&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">音標</span><span class="o">.</span><span class="n">音標</span><span class="p">)</span>  <span class="c1"># peh8</span>
+<span class="n">音標</span> <span class="o">=</span> <span class="n">臺灣閩南語羅馬字拼音相容教會羅馬字音標</span><span class="p">(</span><span class="s1">&#39;piet&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">音標</span><span class="o">.</span><span class="n">音標</span><span class="p">)</span>  <span class="c1"># None</span>
 </pre></div>
 </div>
 <p>目前支援的<a class="reference external" href="https://github.com/sih4sing5hong5/tai5-uan5_gian5-gi2_kang1-ku7/tree/master/%E8%87%BA%E7%81%A3%E8%A8%80%E8%AA%9E%E5%B7%A5%E5%85%B7/%E9%9F%B3%E6%A8%99%E7%B3%BB%E7%B5%B1">音標系統</a></p>
@@ -222,50 +225,50 @@ print(音標.音標)  # None
 </li>
 </ul>
 <div class="section" id="">
-<span id="id5"></span><h3>檢查一句話的音標<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python"><div class="highlight"><pre>from 臺灣言語工具.音標系統.閩南語.臺灣閩南語羅馬字拼音相容教會羅馬字音標 import 臺灣閩南語羅馬字拼音相容教會羅馬字音標
-from 臺灣言語工具.解析整理.拆文分析器 import 拆文分析器
+<span id="id5"></span><h3>檢查一句話的音標<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">臺灣言語工具.音標系統.閩南語.臺灣閩南語羅馬字拼音相容教會羅馬字音標</span> <span class="k">import</span> <span class="n">臺灣閩南語羅馬字拼音相容教會羅馬字音標</span>
+<span class="kn">from</span> <span class="nn">臺灣言語工具.解析整理.拆文分析器</span> <span class="k">import</span> <span class="n">拆文分析器</span>
 
-章物件 = 拆文分析器.建立章物件(&#39;piet8-ue7-jī&#39;)
-for 字物件 in 章物件.篩出字物件():
-    音標物件 = 臺灣閩南語羅馬字拼音相容教會羅馬字音標(字物件.型)
-    if 音標物件.音標 is not None:
-        print(&#39;「{}」合法&#39;.format(字物件.型))
-    else:
-        print(&#39;「{}」無合法&#39;.format(字物件.型))
-# 「piet8」無合法
-# 「ue7」合法
-# 「jī」合法
+<span class="n">章物件</span> <span class="o">=</span> <span class="n">拆文分析器</span><span class="o">.</span><span class="n">建立章物件</span><span class="p">(</span><span class="s1">&#39;piet8-ue7-jī&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">字物件</span> <span class="ow">in</span> <span class="n">章物件</span><span class="o">.</span><span class="n">篩出字物件</span><span class="p">():</span>
+    <span class="n">音標物件</span> <span class="o">=</span> <span class="n">臺灣閩南語羅馬字拼音相容教會羅馬字音標</span><span class="p">(</span><span class="n">字物件</span><span class="o">.</span><span class="n">型</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">音標物件</span><span class="o">.</span><span class="n">音標</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;「</span><span class="si">{}</span><span class="s1">」合法&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">字物件</span><span class="o">.</span><span class="n">型</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;「</span><span class="si">{}</span><span class="s1">」無合法&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">字物件</span><span class="o">.</span><span class="n">型</span><span class="p">))</span>
+<span class="c1"># 「piet8」無合法</span>
+<span class="c1"># 「ue7」合法</span>
+<span class="c1"># 「jī」合法</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="">
-<span id="id6"></span><h2>斷詞<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-python3"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">臺灣言語工具.解析整理.拆文分析器</span> <span class="k">import</span> <span class="n">拆文分析器</span>
+<span id="id6"></span><h2>斷詞<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h2>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">臺灣言語工具.解析整理.拆文分析器</span> <span class="k">import</span> <span class="n">拆文分析器</span>
 <span class="kn">from</span> <span class="nn">臺灣言語工具.辭典.型音辭典</span> <span class="k">import</span> <span class="n">型音辭典</span>
 <span class="kn">from</span> <span class="nn">臺灣言語工具.語言模型.實際語言模型</span> <span class="k">import</span> <span class="n">實際語言模型</span>
 <span class="kn">from</span> <span class="nn">臺灣言語工具.斷詞.拄好長度辭典揣詞</span> <span class="k">import</span> <span class="n">拄好長度辭典揣詞</span>
 <span class="kn">from</span> <span class="nn">臺灣言語工具.斷詞.語言模型揀集內組</span> <span class="k">import</span> <span class="n">語言模型揀集內組</span>
 
-<span class="n">辭典</span> <span class="o">=</span> <span class="n">型音辭典</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>  <span class="c"># 一个詞上濟四个字</span>
-<span class="n">辭典</span><span class="o">.</span><span class="n">加詞</span><span class="p">(</span><span class="n">拆文分析器</span><span class="o">.</span><span class="n">對齊詞物件</span><span class="p">(</span><span class="s">&#39;一&#39;</span><span class="p">,</span> <span class="s">&#39;tsit8&#39;</span><span class="p">))</span>
-<span class="n">辭典</span><span class="o">.</span><span class="n">加詞</span><span class="p">(</span><span class="n">拆文分析器</span><span class="o">.</span><span class="n">對齊詞物件</span><span class="p">(</span><span class="s">&#39;的&#39;</span><span class="p">,</span> <span class="s">&#39;e5&#39;</span><span class="p">))</span>
-<span class="n">辭典</span><span class="o">.</span><span class="n">加詞</span><span class="p">(</span><span class="n">拆文分析器</span><span class="o">.</span><span class="n">對齊詞物件</span><span class="p">(</span><span class="s">&#39;个&#39;</span><span class="p">,</span> <span class="s">&#39;e5&#39;</span><span class="p">))</span>
-<span class="n">辭典</span><span class="o">.</span><span class="n">加詞</span><span class="p">(</span><span class="n">拆文分析器</span><span class="o">.</span><span class="n">對齊詞物件</span><span class="p">(</span><span class="s">&#39;花車&#39;</span><span class="p">,</span> <span class="s">&#39;hue1-tshia1&#39;</span><span class="p">))</span>
-<span class="n">辭典</span><span class="o">.</span><span class="n">加詞</span><span class="p">(</span><span class="n">拆文分析器</span><span class="o">.</span><span class="n">對齊詞物件</span><span class="p">(</span><span class="s">&#39;火車頭&#39;</span><span class="p">,</span> <span class="s">&#39;hue2-tshia1-thau5&#39;</span><span class="p">))</span>
+<span class="n">辭典</span> <span class="o">=</span> <span class="n">型音辭典</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>  <span class="c1"># 一个詞上濟四个字</span>
+<span class="n">辭典</span><span class="o">.</span><span class="n">加詞</span><span class="p">(</span><span class="n">拆文分析器</span><span class="o">.</span><span class="n">對齊詞物件</span><span class="p">(</span><span class="s1">&#39;一&#39;</span><span class="p">,</span> <span class="s1">&#39;tsit8&#39;</span><span class="p">))</span>
+<span class="n">辭典</span><span class="o">.</span><span class="n">加詞</span><span class="p">(</span><span class="n">拆文分析器</span><span class="o">.</span><span class="n">對齊詞物件</span><span class="p">(</span><span class="s1">&#39;的&#39;</span><span class="p">,</span> <span class="s1">&#39;e5&#39;</span><span class="p">))</span>
+<span class="n">辭典</span><span class="o">.</span><span class="n">加詞</span><span class="p">(</span><span class="n">拆文分析器</span><span class="o">.</span><span class="n">對齊詞物件</span><span class="p">(</span><span class="s1">&#39;个&#39;</span><span class="p">,</span> <span class="s1">&#39;e5&#39;</span><span class="p">))</span>
+<span class="n">辭典</span><span class="o">.</span><span class="n">加詞</span><span class="p">(</span><span class="n">拆文分析器</span><span class="o">.</span><span class="n">對齊詞物件</span><span class="p">(</span><span class="s1">&#39;花車&#39;</span><span class="p">,</span> <span class="s1">&#39;hue1-tshia1&#39;</span><span class="p">))</span>
+<span class="n">辭典</span><span class="o">.</span><span class="n">加詞</span><span class="p">(</span><span class="n">拆文分析器</span><span class="o">.</span><span class="n">對齊詞物件</span><span class="p">(</span><span class="s1">&#39;火車頭&#39;</span><span class="p">,</span> <span class="s1">&#39;hue2-tshia1-thau5&#39;</span><span class="p">))</span>
 
-<span class="n">語言模型</span> <span class="o">=</span> <span class="n">實際語言模型</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  <span class="c"># 參考前後文，連紲2个詞為單位</span>
-<span class="n">語言模型</span><span class="o">.</span><span class="n">看</span><span class="p">(</span><span class="n">拆文分析器</span><span class="o">.</span><span class="n">對齊句物件</span><span class="p">(</span><span class="s">&#39;我的&#39;</span><span class="p">,</span> <span class="s">&#39;gua2 e5&#39;</span><span class="p">))</span>
-<span class="n">語言模型</span><span class="o">.</span><span class="n">看</span><span class="p">(</span><span class="n">拆文分析器</span><span class="o">.</span><span class="n">對齊句物件</span><span class="p">(</span><span class="s">&#39;一个&#39;</span><span class="p">,</span> <span class="s">&#39;tsit8 e5&#39;</span><span class="p">))</span>
+<span class="n">語言模型</span> <span class="o">=</span> <span class="n">實際語言模型</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># 參考前後文，連紲2个詞為單位</span>
+<span class="n">語言模型</span><span class="o">.</span><span class="n">看</span><span class="p">(</span><span class="n">拆文分析器</span><span class="o">.</span><span class="n">對齊句物件</span><span class="p">(</span><span class="s1">&#39;我的&#39;</span><span class="p">,</span> <span class="s1">&#39;gua2 e5&#39;</span><span class="p">))</span>
+<span class="n">語言模型</span><span class="o">.</span><span class="n">看</span><span class="p">(</span><span class="n">拆文分析器</span><span class="o">.</span><span class="n">對齊句物件</span><span class="p">(</span><span class="s1">&#39;一个&#39;</span><span class="p">,</span> <span class="s1">&#39;tsit8 e5&#39;</span><span class="p">))</span>
 
 <span class="n">揣詞結果</span> <span class="o">=</span> <span class="p">(</span>
-    <span class="n">拆文分析器</span><span class="o">.</span><span class="n">建立句物件</span><span class="p">(</span><span class="s">&#39;tsit8 e5 hue2 tshia1 thau5&#39;</span><span class="p">)</span>
-    <span class="o">.</span><span class="n">揣詞</span><span class="p">(</span><span class="n">拄好長度辭典揣詞</span><span class="p">,</span> <span class="n">辭典</span><span class="p">)</span>  <span class="c"># 斷詞的演算法</span>
-    <span class="o">.</span><span class="n">揀</span><span class="p">(</span><span class="n">語言模型揀集內組</span><span class="p">,</span> <span class="n">語言模型</span><span class="p">)</span>  <span class="c"># 揀詞的演算法</span>
+    <span class="n">拆文分析器</span><span class="o">.</span><span class="n">建立句物件</span><span class="p">(</span><span class="s1">&#39;tsit8 e5 hue2 tshia1 thau5&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">揣詞</span><span class="p">(</span><span class="n">拄好長度辭典揣詞</span><span class="p">,</span> <span class="n">辭典</span><span class="p">)</span>  <span class="c1"># 斷詞的演算法</span>
+    <span class="o">.</span><span class="n">揀</span><span class="p">(</span><span class="n">語言模型揀集內組</span><span class="p">,</span> <span class="n">語言模型</span><span class="p">)</span>  <span class="c1"># 揀詞的演算法</span>
 <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">揣詞結果</span><span class="o">.</span><span class="n">看型</span><span class="p">())</span>  <span class="c"># 一个火車頭</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">揣詞結果</span><span class="o">.</span><span class="n">看音</span><span class="p">())</span>  <span class="c"># tsit8 e5 hue2-tshia1-thau5</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">揣詞結果</span><span class="o">.</span><span class="n">看型</span><span class="p">())</span>  <span class="c1"># 一个火車頭</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">揣詞結果</span><span class="o">.</span><span class="n">看音</span><span class="p">())</span>  <span class="c1"># tsit8 e5 hue2-tshia1-thau5</span>
 </pre></div>
 </div>
 </div>

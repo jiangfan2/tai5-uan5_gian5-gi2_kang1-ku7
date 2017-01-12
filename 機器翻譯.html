@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>機器翻譯（Machine Translation） &mdash; 臺灣言語工具 0.6.11 documentation</title>
+  <title>機器翻譯（Machine Translation） &mdash; 臺灣言語工具 0.6.11 說明文件</title>
   
 
   
@@ -30,7 +30,10 @@
   
 
   
-    <link rel="top" title="臺灣言語工具 0.6.11 documentation" href="index.html"/>
+        <link rel="index" title="索引"
+              href="genindex.html"/>
+        <link rel="search" title="搜尋" href="search.html"/>
+    <link rel="top" title="臺灣言語工具 0.6.11 說明文件" href="index.html"/>
         <link rel="next" title="語音合成（Speech Synthesis）" href="語音合成.html"/>
         <link rel="prev" title="常見情境" href="常見情境.html"/> 
 
@@ -86,7 +89,7 @@
 <li class="toctree-l1"><a class="reference internal" href="安裝.html">安裝</a></li>
 <li class="toctree-l1"><a class="reference internal" href="基本物件.html">基本物件</a></li>
 <li class="toctree-l1"><a class="reference internal" href="常見情境.html">常見情境</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">機器翻譯（Machine Translation）</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">機器翻譯（Machine Translation）</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#">套件準備</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#">安裝</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#">模型訓練</a></li>
@@ -127,7 +130,7 @@
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -139,7 +142,7 @@
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="_sources/機器翻譯.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/機器翻譯.md.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -150,7 +153,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="machine-translation">
-<span id="machine-translation"></span><h1>機器翻譯（Machine Translation）<a class="headerlink" href="#machine-translation" title="Permalink to this headline">¶</a></h1>
+<span id="machine-translation"></span><h1>機器翻譯（Machine Translation）<a class="headerlink" href="#machine-translation" title="本標題的永久連結">¶</a></h1>
 <ul class="simple">
 <li>輸入<ul>
 <li>指定的母語，一句語句</li>
@@ -188,27 +191,27 @@
 </ul>
 <p>本函式庫使用<a class="reference external" href="http://www.statmt.org/moses/?n=Development.GetStarted">Moses</a>統計式機器翻譯。</p>
 <div class="section" id="">
-<span id="id1"></span><h2>套件準備<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-bash"><div class="highlight"><pre>sudo apt-get install -y g++ git subversion automake libtool zlib1g-dev libboost-all-dev libbz2-dev liblzma-dev python3-dev libgoogle-perftools-dev libxmlrpc-c++.*-dev <span class="c"># moses, libxmlrpc for mosesserver</span>
-sudo apt-get install -y cmake <span class="c"># mgiza</span>
+<span id="id1"></span><h2>套件準備<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h2>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo apt-get install -y g++ git subversion automake libtool zlib1g-dev libboost-all-dev libbz2-dev liblzma-dev python3-dev libgoogle-perftools-dev libxmlrpc-c++.*-dev <span class="c1"># moses, libxmlrpc for mosesserver</span>
+sudo apt-get install -y cmake <span class="c1"># mgiza</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="">
-<span id="id2"></span><h2>安裝<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h2>
+<span id="id2"></span><h2>安裝<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h2>
 <p>編譯需要半小時至一小時以上，剩下的步驟可以邊做
 執行<code class="docutils literal"><span class="pre">python</span></code>，而且輸入</p>
-<div class="highlight-python3"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">臺灣言語工具.翻譯.摩西工具.安裝摩西翻譯佮相關程式</span> <span class="k">import</span> <span class="n">安裝摩西翻譯佮相關程式</span>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">臺灣言語工具.翻譯.摩西工具.安裝摩西翻譯佮相關程式</span> <span class="k">import</span> <span class="n">安裝摩西翻譯佮相關程式</span>
 <span class="n">安裝摩西翻譯佮相關程式</span><span class="o">.</span><span class="n">安裝moses</span><span class="p">(</span><span class="n">編譯CPU數</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 <span class="n">安裝摩西翻譯佮相關程式</span><span class="o">.</span><span class="n">安裝gizapp</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="">
-<span id="id3"></span><h2>模型訓練<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h2>
+<span id="id3"></span><h2>模型訓練<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h2>
 </div>
 <div class="section" id="">
-<span id="id4"></span><h2>模型使用<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h2>
+<span id="id4"></span><h2>模型使用<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h2>
 </div>
 </div>
 

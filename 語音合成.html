@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>語音合成（Speech Synthesis） &mdash; 臺灣言語工具 0.6.11 documentation</title>
+  <title>語音合成（Speech Synthesis） &mdash; 臺灣言語工具 0.6.11 說明文件</title>
   
 
   
@@ -30,7 +30,10 @@
   
 
   
-    <link rel="top" title="臺灣言語工具 0.6.11 documentation" href="index.html"/>
+        <link rel="index" title="索引"
+              href="genindex.html"/>
+        <link rel="search" title="搜尋" href="search.html"/>
+    <link rel="top" title="臺灣言語工具 0.6.11 說明文件" href="index.html"/>
         <link rel="next" title="語音辨識（Speech Recognition）" href="語音辨識.html"/>
         <link rel="prev" title="機器翻譯（Machine Translation）" href="機器翻譯.html"/> 
 
@@ -87,7 +90,7 @@
 <li class="toctree-l1"><a class="reference internal" href="基本物件.html">基本物件</a></li>
 <li class="toctree-l1"><a class="reference internal" href="常見情境.html">常見情境</a></li>
 <li class="toctree-l1"><a class="reference internal" href="機器翻譯.html">機器翻譯（Machine Translation）</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">語音合成（Speech Synthesis）</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">語音合成（Speech Synthesis）</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#">合成原理</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#">接音合成</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#">模型合成</a></li>
@@ -169,7 +172,7 @@
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -181,7 +184,7 @@
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="_sources/語音合成.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/語音合成.md.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -192,21 +195,21 @@
            <div itemprop="articleBody">
             
   <div class="section" id="speech-synthesis">
-<span id="speech-synthesis"></span><h1>語音合成（Speech Synthesis）<a class="headerlink" href="#speech-synthesis" title="Permalink to this headline">¶</a></h1>
+<span id="speech-synthesis"></span><h1>語音合成（Speech Synthesis）<a class="headerlink" href="#speech-synthesis" title="本標題的永久連結">¶</a></h1>
 <p>語音合成是文字轉做聲音的資訊技術，親像<a class="reference external" href="http://itaigi.tw">iTaigi</a>、車站廣播，有聲冊攏有語音合成的應用。</p>
 <p>若想直接使用語音合成，請看<a class="reference external" href="https://github.com/sih4sing5hong5/tai5-uan5_gian5-gi2_hok8-bu7/wiki/快速說明#直接用訓練好的語音合成">服務文件</a>來設定自己的服務</p>
 <div class="section" id="">
-<span id="id1"></span><h2>合成原理<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h2>
+<span id="id1"></span><h2>合成原理<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h2>
 <p>這馬時行的做法有接音合成（Corpus-based Speech Synthesis）佮模型合成（Model-based Speech Synthesis）：</p>
 <div class="section" id="">
-<span id="id2"></span><h3>接音合成<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h3>
+<span id="id2"></span><h3>接音合成<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h3>
 <p>火車客運的廣播(花蓮站到矣)、排隊的叫號(593號請到3號櫃台)攏是用接音合成，
 in的做法就是先錄需要的詞佮語句，
 當欲用的時陣，才閣共in接起來。</p>
 <p>這个做法的缺點是口語無一致，聽起來可能會無順無自然。</p>
 </div>
 <div class="section" id="">
-<span id="id3"></span><h3>模型合成<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h3>
+<span id="id3"></span><h3>模型合成<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h3>
 <p><a class="reference external" href="https://意傳.台灣">意傳</a>佮<a class="reference external" href="http://tts.itri.org.tw">工研院</a>攏是用這種技術。
 頭一步共語音訊號轉做一个一个的頻譜佮頻率，
 才閣揣出音標佮頻譜的對應關係，佗一種音標會按怎唸，</p>
@@ -219,7 +222,7 @@ in的做法就是先錄需要的詞佮語句，
 兩擺轉換造成音質變bai2。</p>
 </div>
 <div class="section" id="">
-<span id="id4"></span><h3>混合模型<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h3>
+<span id="id4"></span><h3>混合模型<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h3>
 <p>為著改善面頂兩種模型的缺點，
 就愛用接音合成會配合模型合成。
 用<code class="docutils literal"><span class="pre">模型合成</span></code>產生的頻譄佮頻率，
@@ -233,10 +236,10 @@ in的做法就是先錄需要的詞佮語句，
 </div>
 </div>
 <div class="section" id="">
-<span id="id5"></span><h2>語料準備<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h2>
+<span id="id5"></span><h2>語料準備<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h2>
 <p>這段是佇咧介紹，若是愛用模型合成，應該愛按怎準備語料</p>
 <div class="section" id="">
-<span id="id6"></span><h3>需要<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h3>
+<span id="id6"></span><h3>需要<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h3>
 <ul class="simple">
 <li><code class="docutils literal"><span class="pre">會講這個語言的人A</span></code></li>
 <li><code class="docutils literal"><span class="pre">會音標的人B</span></code></li>
@@ -245,7 +248,7 @@ in的做法就是先錄需要的詞佮語句，
 </ul>
 </div>
 <div class="section" id="">
-<span id="id7"></span><h3>準備流程<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h3>
+<span id="id7"></span><h3>準備流程<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h3>
 <ol class="simple">
 <li><code class="docutils literal"><span class="pre">會語音學的人C</span></code>先瞭解這個語言的語音特性</li>
 </ol>
@@ -289,21 +292,21 @@ in的做法就是先錄需要的詞佮語句，
 </ol>
 <p>###偷食步</p>
 <div class="section" id="">
-<span id="id8"></span><h4>閩南語<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h4>
+<span id="id8"></span><h4>閩南語<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h4>
 <ul class="simple">
 <li><a class="reference external" href="https://github.com/sih4sing5hong5/tai5-uan5_gian5-gi2_hok8-bu7/wiki/快速說明#訓練語音合成模型">教育部辭典</a></li>
 <li><a class="reference external" href="https://bible.fhl.net/new/audio_hb.php?version=1">信望愛台語聖經</a></li>
 </ul>
 </div>
 <div class="section" id="">
-<span id="id9"></span><h4>客家<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h4>
+<span id="id9"></span><h4>客家<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h4>
 <ul class="simple">
 <li>教育部客語辭典</li>
 <li>客委會認證教材</li>
 </ul>
 </div>
 <div class="section" id="">
-<span id="id10"></span><h4>族語<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h4>
+<span id="id10"></span><h4>族語<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h4>
 <ul class="simple">
 <li>原住民族語言線上詞典</li>
 </ul>
@@ -311,19 +314,19 @@ in的做法就是先錄需要的詞佮語句，
 </div>
 </div>
 <div class="section" id="">
-<span id="id11"></span><h2>程式修改<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h2>
+<span id="id11"></span><h2>程式修改<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h2>
 <p><a class="reference external" href="https://github.com/sih4sing5hong5/tai5-uan5_gian5-gi2_hok8-bu7/wiki">臺灣言語服務</a>目前支援閩南語、客話佮華語，若是需要加族語抑是別種語言，會使來看這段。</p>
 <p><code class="docutils literal"><span class="pre">服務</span></code>會先用<code class="docutils literal"><span class="pre">HTK</span></code>佮語料對齊，才閣用<code class="docutils literal"><span class="pre">HTS</span></code>計算參數。建議先照的<a class="reference external" href="https://github.com/sih4sing5hong5/tai5-uan5_gian5-gi2_hok8-bu7/wiki/快速說明#訓練語音合成模型">訓練語音合成模型</a>做，確定可以執行才開始看程式</p>
 <div class="section" id="">
-<span id="id12"></span><h3>程式準備<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h3>
+<span id="id12"></span><h3>程式準備<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h3>
 <p>以<a class="reference external" href="https://github.com/sih4sing5hong5/tai5-uan5_gian5-gi2_hok8-bu7/blob/master/tai5uan5_gian5gi2_hok8bu7/settings.py#L138-L144">客語</a>為例</p>
-<div class="highlight-python"><div class="highlight"><pre>&#39;詔安腔&#39;: {
-    &#39;語族&#39;: &#39;漢語&#39;,
-    &#39;音標系統&#39;: 臺灣客家話拼音,
-    &#39;字綜合標音&#39;: 客話綜合標音,
-    &#39;文本音值表&#39;: 客家話文本音值表,
-    &#39;決策樹仔&#39;: 客家話決策樹仔,
-},
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="s1">&#39;詔安腔&#39;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s1">&#39;語族&#39;</span><span class="p">:</span> <span class="s1">&#39;漢語&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;音標系統&#39;</span><span class="p">:</span> <span class="n">臺灣客家話拼音</span><span class="p">,</span>
+    <span class="s1">&#39;字綜合標音&#39;</span><span class="p">:</span> <span class="n">客話綜合標音</span><span class="p">,</span>
+    <span class="s1">&#39;文本音值表&#39;</span><span class="p">:</span> <span class="n">客家話文本音值表</span><span class="p">,</span>
+    <span class="s1">&#39;決策樹仔&#39;</span><span class="p">:</span> <span class="n">客家話決策樹仔</span><span class="p">,</span>
+<span class="p">},</span>
 </pre></div>
 </div>
 <p>較重要的參數：</p>
@@ -334,7 +337,7 @@ in的做法就是先錄需要的詞佮語句，
 </ul>
 </div>
 <div class="section" id="">
-<span id="id13"></span><h3>流程<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h3>
+<span id="id13"></span><h3>流程<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h3>
 <ol class="simple">
 <li>匯入語料</li>
 <li>安裝相關套件</li>
@@ -344,12 +347,12 @@ in的做法就是先錄需要的詞佮語句，
 <li>HTS服務.語音合成實作</li>
 </ol>
 <div class="section" id="">
-<span id="id14"></span><h4>匯入語料<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h4>
+<span id="id14"></span><h4>匯入語料<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h4>
 </div>
 <div class="section" id="">
-<span id="id15"></span><h4>安裝相關套件<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h4>
+<span id="id15"></span><h4>安裝相關套件<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h4>
 <p>執行<code class="docutils literal"><span class="pre">python</span></code>，而且輸入</p>
-<div class="highlight-python3"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">臺灣言語工具.語音合成.HTS工具.安裝HTS語音辨識程式</span> <span class="k">import</span> <span class="n">安裝HTS語音辨識程式</span>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">臺灣言語工具.語音合成.HTS工具.安裝HTS語音辨識程式</span> <span class="k">import</span> <span class="n">安裝HTS語音辨識程式</span>
 <span class="n">安裝HTS語音辨識程式</span><span class="o">.</span><span class="n">安裝htk</span><span class="p">()</span>
 <span class="n">安裝HTS語音辨識程式</span><span class="o">.</span><span class="n">安裝sptk</span><span class="p">()</span>
 <span class="n">安裝HTS語音辨識程式</span><span class="o">.</span><span class="n">安裝hts</span><span class="p">()</span>
@@ -358,12 +361,12 @@ in的做法就是先錄需要的詞佮語句，
 </div>
 </div>
 <div class="section" id="hts">
-<span id="hts"></span><h4>HTS模型訓練.輸出一種語言語料<a class="headerlink" href="#hts" title="Permalink to this headline">¶</a></h4>
+<span id="hts"></span><h4>HTS模型訓練.輸出一種語言語料<a class="headerlink" href="#hts" title="本標題的永久連結">¶</a></h4>
 <p>對逐句語料，輸出對應的<code class="docutils literal"><span class="pre">音檔</span></code>、<code class="docutils literal"><span class="pre">孤音標仔</span></code>、<code class="docutils literal"><span class="pre">相依標仔</span></code></p>
 <div class="section" id="">
-<span id="id16"></span><h5>孤音標仔格式<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h5>
+<span id="id16"></span><h5>孤音標仔格式<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h5>
 <p>以<code class="docutils literal"><span class="pre">一半/tsit4-puann3</span></code>為例，拆做聲佮韻</p>
-<div class="highlight-python"><div class="highlight"><pre><span class="n">sil</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sil</span>
 <span class="n">ts</span>
 <span class="n">it</span>
 <span class="n">p</span>
@@ -373,12 +376,12 @@ in的做法就是先錄需要的詞佮語句，
 </div>
 </div>
 <div class="section" id="">
-<span id="id17"></span><h5>相依標仔格式<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h5>
+<span id="id17"></span><h5>相依標仔格式<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h5>
 <p>一般會註明前音後音、第幾个詞、上尾第幾个詞、…。
 無仝的語言格式可能會無仝，
 親像漢語的聲調，南島語就愛注明重音。</p>
 <p>以<code class="docutils literal"><span class="pre">一半/tsit4-puann3</span></code>為例</p>
-<div class="highlight-python"><div class="highlight"><pre>==&gt; 語料/相依標仔/im0000007.lab &lt;==
+<div class="highlight-default"><div class="highlight"><pre><span></span>==&gt; 語料/相依標仔/im0000007.lab &lt;==
 x-sil+x/調:x&lt;x&gt;x/詞:x!x@x/句:x^x_x
 sil-ts+it/調:x&lt;10&gt;3/詞:0!2@2/句:0^1_1
 ts-it+p/調:x&lt;10&gt;3/詞:0!2@2/句:0^1_1
@@ -390,23 +393,23 @@ x-sil+x/調:x&lt;x&gt;x/詞:x!x@x/句:x^x_x
 </div>
 </div>
 <div class="section" id="hts">
-<span id="id18"></span><h4>HTS模型訓練.對齊聲韻<a class="headerlink" href="#hts" title="Permalink to this headline">¶</a></h4>
+<span id="id18"></span><h4>HTS模型訓練.對齊聲韻<a class="headerlink" href="#hts" title="本標題的永久連結">¶</a></h4>
 <p>用<code class="docutils literal"><span class="pre">HTK</span></code>標孤音標仔的時間</p>
 <div class="section" id="">
-<span id="id19"></span><h5>標好時間的孤音標仔格式<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h5>
-<div class="highlight-python"><div class="highlight"><pre>==&gt; HTK對齊標仔過程/快速對齊結果/對齊聲韻結果/im0000007.lab &lt;==
-0 2000000 sil
-2000000 3100000 ts
-3100000 5100000 it
-5100000 6100000 p
-6100000 11500000 uⁿaⁿ
-11500000 12900000 sil
+<span id="id19"></span><h5>標好時間的孤音標仔格式<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h5>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">==&gt;</span> <span class="n">HTK對齊標仔過程</span><span class="o">/</span><span class="n">快速對齊結果</span><span class="o">/</span><span class="n">對齊聲韻結果</span><span class="o">/</span><span class="n">im0000007</span><span class="o">.</span><span class="n">lab</span> <span class="o">&lt;==</span>
+<span class="mi">0</span> <span class="mi">2000000</span> <span class="n">sil</span>
+<span class="mi">2000000</span> <span class="mi">3100000</span> <span class="n">ts</span>
+<span class="mi">3100000</span> <span class="mi">5100000</span> <span class="n">it</span>
+<span class="mi">5100000</span> <span class="mi">6100000</span> <span class="n">p</span>
+<span class="mi">6100000</span> <span class="mi">11500000</span> <span class="n">uⁿaⁿ</span>
+<span class="mi">11500000</span> <span class="mi">12900000</span> <span class="n">sil</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="hts-hts">
-<span id="hts-hts"></span><h4>HTS模型訓練.輸出HTS標仔問題音檔而且訓練<a class="headerlink" href="#hts-hts" title="Permalink to this headline">¶</a></h4>
+<span id="hts-hts"></span><h4>HTS模型訓練.輸出HTS標仔問題音檔而且訓練<a class="headerlink" href="#hts-hts" title="本標題的永久連結">¶</a></h4>
 <p>產生<code class="docutils literal"><span class="pre">htsDemoScript</span></code>需要的檔案</p>
 <ol class="simple">
 <li><code class="docutils literal"><span class="pre">孤音標仔</span></code>佮<code class="docutils literal"><span class="pre">相依標仔</span></code>標仔</li>
@@ -417,7 +420,7 @@ x-sil+x/調:x&lt;x&gt;x/詞:x!x@x/句:x^x_x
 <p>愛注意的是，無仝的相依標仔格式，就需要無仝的<code class="docutils literal"><span class="pre">決策樹仔</span></code></p>
 </div>
 <div class="section" id="hts">
-<span id="id20"></span><h4>HTS服務.語音合成實作<a class="headerlink" href="#hts" title="Permalink to this headline">¶</a></h4>
+<span id="id20"></span><h4>HTS服務.語音合成實作<a class="headerlink" href="#hts" title="本標題的永久連結">¶</a></h4>
 <ol class="simple">
 <li>輸入是<code class="docutils literal"><span class="pre">分詞</span></code>格式的語句，會轉做<code class="docutils literal"><span class="pre">相依標仔</span></code>格式</li>
 <li><code class="docutils literal"><span class="pre">htsengine</span></code>用訓練出來的<code class="docutils literal"><span class="pre">htsvoice</span></code>模型，共<code class="docutils literal"><span class="pre">相依標仔</span></code>合做<code class="docutils literal"><span class="pre">音檔</span></code></li>
@@ -426,7 +429,7 @@ x-sil+x/調:x&lt;x&gt;x/詞:x!x@x/句:x^x_x
 </div>
 </div>
 <div class="section" id="">
-<span id="id21"></span><h2>演算法修改<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h2>
+<span id="id21"></span><h2>演算法修改<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h2>
 <p>介紹<code class="docutils literal"><span class="pre">服務</span></code>用的<code class="docutils literal"><span class="pre">HTK</span></code>佮<code class="docutils literal"><span class="pre">HTS</span></code>作法。</p>
 <p>HTK（Hidden Markov Model Toolkit）是專門提來做語音辨識的開源工具，
 伊頭仔先共<code class="docutils literal"><span class="pre">音檔</span></code>轉做<code class="docutils literal"><span class="pre">MFCC頻譜</span></code>，
@@ -437,7 +440,7 @@ x-sil+x/調:x&lt;x&gt;x/詞:x!x@x/句:x^x_x
 用著<code class="docutils literal"><span class="pre">隱性馬可夫模型</span></code>、<code class="docutils literal"><span class="pre">高斯混合模型</span></code>佮<code class="docutils literal"><span class="pre">決策樹</span></code>來訓練<code class="docutils literal"><span class="pre">duration時間</span></code>、<code class="docutils literal"><span class="pre">mgc頻譜</span></code>佮<code class="docutils literal"><span class="pre">lf0頻率對數</span></code>的預測模型，
 尾仔才閣用<code class="docutils literal"><span class="pre">合成器（Vocoder）</span></code>共<code class="docutils literal"><span class="pre">duration時間</span></code>、<code class="docutils literal"><span class="pre">mgc頻譜</span></code>佮<code class="docutils literal"><span class="pre">lf0頻率對數（log</span> <span class="pre">f0）</span></code>轉轉<code class="docutils literal"><span class="pre">音檔</span></code>。</p>
 <div class="section" id="">
-<span id="id22"></span><h3>流程<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h3>
+<span id="id22"></span><h3>流程<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h3>
 <ol class="simple">
 <li>準備語料，包含音標佮對應音檔</li>
 <li>輸出一種語言語料</li>
@@ -447,9 +450,9 @@ x-sil+x/調:x&lt;x&gt;x/詞:x!x@x/句:x^x_x
 </ol>
 </div>
 <div class="section" id="htk">
-<span id="htk"></span><h3><code class="docutils literal"><span class="pre">大略仔對齊音標佇音檔的時間</span></code>HTK<a class="headerlink" href="#htk" title="Permalink to this headline">¶</a></h3>
+<span id="htk"></span><h3><code class="docutils literal"><span class="pre">大略仔對齊音標佇音檔的時間</span></code>HTK<a class="headerlink" href="#htk" title="本標題的永久連結">¶</a></h3>
 <div class="section" id="">
-<span id="id23"></span><h4>聲音特徵<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h4>
+<span id="id23"></span><h4>聲音特徵<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h4>
 <p>聲音會有足濟特徵，</p>
 <ul class="simple">
 <li>頻譜（音色）</li>
@@ -457,7 +460,7 @@ x-sil+x/調:x&lt;x&gt;x/詞:x!x@x/句:x^x_x
 </ul>
 </div>
 <div class="section" id="htk">
-<span id="id24"></span><h4>HTK訓練過程<a class="headerlink" href="#htk" title="Permalink to this headline">¶</a></h4>
+<span id="id24"></span><h4>HTK訓練過程<a class="headerlink" href="#htk" title="本標題的永久連結">¶</a></h4>
 <ul class="simple">
 <li>會先統計逐个音的頻譜特徵<ul>
 <li>高斯混合模型</li>
@@ -488,11 +491,11 @@ x-sil+x/調:x&lt;x&gt;x/詞:x!x@x/句:x^x_x
 </div>
 </div>
 <div class="section" id="hts">
-<span id="id25"></span><h3><code class="docutils literal"><span class="pre">HTS</span></code>那調整對齊時間，那訓練模型<a class="headerlink" href="#hts" title="Permalink to this headline">¶</a></h3>
+<span id="id25"></span><h3><code class="docutils literal"><span class="pre">HTS</span></code>那調整對齊時間，那訓練模型<a class="headerlink" href="#hts" title="本標題的永久連結">¶</a></h3>
 <div class="section" id="">
-<span id="id26"></span><h4>訓練包流程<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h4>
+<span id="id26"></span><h4>訓練包流程<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h4>
 <p>檔案<code class="docutils literal"><span class="pre">scripts/Config.pl</span></code></p>
-<div class="highlight-python"><div class="highlight"><pre>$MKEMV = 1; # preparing environments
+<div class="highlight-default"><div class="highlight"><pre><span></span>$MKEMV = 1; # preparing environments
 $HCMPV = 1; # computing a global variance
 $IN_RE = 1; # initialization &amp; reestimation　←用單位標籤先訓練模型
 $MMMMF = 1; # making a monophone mmf
@@ -517,7 +520,7 @@ $ENGIN = 0; # synthesizing waveforms using hts_engine ←用htsengine合聲
 </div>
 </div>
 <div class="section" id="">
-<span id="id27"></span><h4>流程說明<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h4>
+<span id="id27"></span><h4>流程說明<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h4>
 <ul class="simple">
 <li>HTS會用著頻譜mgc佮頻率f0</li>
 <li>使用時攏用頻率對數（log f0, lf0）來算</li>
@@ -545,7 +548,7 @@ $ENGIN = 0; # synthesizing waveforms using hts_engine ←用htsengine合聲
 </ul>
 </div>
 <div class="section" id="">
-<span id="id28"></span><h4>準備檔案<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h4>
+<span id="id28"></span><h4>準備檔案<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h4>
 <ul class="simple">
 <li>聲音檔</li>
 <li>無wav檔頭</li>
@@ -558,7 +561,7 @@ $ENGIN = 0; # synthesizing waveforms using hts_engine ←用htsengine合聲
 </ul>
 </div>
 <div class="section" id="hts">
-<span id="id29"></span><h4>HTS訓練過程<a class="headerlink" href="#hts" title="Permalink to this headline">¶</a></h4>
+<span id="id29"></span><h4>HTS訓練過程<a class="headerlink" href="#hts" title="本標題的永久連結">¶</a></h4>
 <p>佮HTK仝款先重估
 用高斯模型，加混合效果無較好（揣無來源論文）
 親像
@@ -574,11 +577,11 @@ HTS訓練過程
 用決策樹分類</p>
 </div>
 <div class="section" id="">
-<span id="id30"></span><h4>決策樹分類器<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h4>
+<span id="id30"></span><h4>決策樹分類器<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h4>
 <p>合成需要mgc、lf0、duration三个參數
 所以決策樹的輸出就是這三種</p>
 <div class="section" id="">
-<span id="id31"></span><h5>特徵<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h5>
+<span id="id31"></span><h5>特徵<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h5>
 <p>有三个聲音特徵會用著決策樹，逐个state一个樹，以下攏總有5+5+1欉決策樹</p>
 <ul class="simple">
 <li>Mgc<ul>
@@ -602,17 +605,17 @@ HTS訓練過程
 </ul>
 </div>
 <div class="section" id="">
-<span id="id32"></span><h5>決策樹範例<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h5>
+<span id="id32"></span><h5>決策樹範例<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h5>
 <p>訓練後產生的決策樹，
 一逝代表一个問題，
 後壁的數字分別代表「答案毋著」佮「答案著」對應的路</p>
-<div class="highlight-python"><div class="highlight"><pre>{*}[2].stream[1]
-{
-   0 Utt_Len_Ku3&lt;=4                                     -1         -3    
-  -1 Si7_Tsing7                                         -2          &quot;mgc_s2_1&quot; 
-  -2 Si7_Uan5_Im1                                      -17         -7    
-  -3 Ui3_Su5_Bue2&lt;=2                                   -12         -4    
-  -4 Si7_i_Tiong1                                       -6         -5    
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span><span class="o">*</span><span class="p">}[</span><span class="mi">2</span><span class="p">]</span><span class="o">.</span><span class="n">stream</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="p">{</span>
+   <span class="mi">0</span> <span class="n">Utt_Len_Ku3</span><span class="o">&lt;=</span><span class="mi">4</span>                                     <span class="o">-</span><span class="mi">1</span>         <span class="o">-</span><span class="mi">3</span>    
+  <span class="o">-</span><span class="mi">1</span> <span class="n">Si7_Tsing7</span>                                         <span class="o">-</span><span class="mi">2</span>          <span class="s2">&quot;mgc_s2_1&quot;</span> 
+  <span class="o">-</span><span class="mi">2</span> <span class="n">Si7_Uan5_Im1</span>                                      <span class="o">-</span><span class="mi">17</span>         <span class="o">-</span><span class="mi">7</span>    
+  <span class="o">-</span><span class="mi">3</span> <span class="n">Ui3_Su5_Bue2</span><span class="o">&lt;=</span><span class="mi">2</span>                                   <span class="o">-</span><span class="mi">12</span>         <span class="o">-</span><span class="mi">4</span>    
+  <span class="o">-</span><span class="mi">4</span> <span class="n">Si7_i_Tiong1</span>                                       <span class="o">-</span><span class="mi">6</span>         <span class="o">-</span><span class="mi">5</span>    
 </pre></div>
 </div>
 <ul class="simple">
@@ -621,21 +624,21 @@ HTS訓練過程
 </ul>
 </div>
 <div class="section" id="">
-<span id="id33"></span><h5>問題集<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h5>
+<span id="id33"></span><h5>問題集<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h5>
 <p>逐个問題攏是用字元、<code class="docutils literal"><span class="pre">*</span></code>佮<code class="docutils literal"><span class="pre">?</span></code>來判斷<code class="docutils literal"><span class="pre">相依標仔</span></code>有符合這个問題無。
 <code class="docutils literal"><span class="pre">*</span></code>代表任意字元，<code class="docutils literal"><span class="pre">?</span></code>代表一个字元</p>
-<div class="highlight-python"><div class="highlight"><pre>...
-QS &quot;Si7_Ki2_Uan5_Im1&quot;      {*-i+*,*-e+*,*-a+*}
-QS &quot;Si7_Kin1_Uan5_Im1&quot;    {*-o+*,*-u+*}
-QS &quot;Si7_Ting2_Uan5_Im1&quot;      {*-i+*,*-u+*}
-QS &quot;Si7_Tiong1_Uan5_Im1&quot;    {*-e+*,*-o+*}
-QS &quot;Si7_Ke1_Uan5_Im1&quot;      {*-a+*}
-...
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">...</span>
+<span class="n">QS</span> <span class="s2">&quot;Si7_Ki2_Uan5_Im1&quot;</span>      <span class="p">{</span><span class="o">*-</span><span class="n">i</span><span class="o">+*</span><span class="p">,</span><span class="o">*-</span><span class="n">e</span><span class="o">+*</span><span class="p">,</span><span class="o">*-</span><span class="n">a</span><span class="o">+*</span><span class="p">}</span>
+<span class="n">QS</span> <span class="s2">&quot;Si7_Kin1_Uan5_Im1&quot;</span>    <span class="p">{</span><span class="o">*-</span><span class="n">o</span><span class="o">+*</span><span class="p">,</span><span class="o">*-</span><span class="n">u</span><span class="o">+*</span><span class="p">}</span>
+<span class="n">QS</span> <span class="s2">&quot;Si7_Ting2_Uan5_Im1&quot;</span>      <span class="p">{</span><span class="o">*-</span><span class="n">i</span><span class="o">+*</span><span class="p">,</span><span class="o">*-</span><span class="n">u</span><span class="o">+*</span><span class="p">}</span>
+<span class="n">QS</span> <span class="s2">&quot;Si7_Tiong1_Uan5_Im1&quot;</span>    <span class="p">{</span><span class="o">*-</span><span class="n">e</span><span class="o">+*</span><span class="p">,</span><span class="o">*-</span><span class="n">o</span><span class="o">+*</span><span class="p">}</span>
+<span class="n">QS</span> <span class="s2">&quot;Si7_Ke1_Uan5_Im1&quot;</span>      <span class="p">{</span><span class="o">*-</span><span class="n">a</span><span class="o">+*</span><span class="p">}</span>
+<span class="o">...</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="">
-<span id="id34"></span><h5>決策樹採用問題集分支的原則<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h5>
+<span id="id34"></span><h5>決策樹採用問題集分支的原則<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h5>
 <ol class="simple">
 <li>揣一个問題</li>
 <li>予兩爿的數量差無濟</li>

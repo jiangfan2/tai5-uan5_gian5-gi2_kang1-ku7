@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>斷詞（Word Segmentation） &mdash; 臺灣言語工具 0.6.11 documentation</title>
+  <title>斷詞（Word Segmentation） &mdash; 臺灣言語工具 0.6.11 說明文件</title>
   
 
   
@@ -30,7 +30,10 @@
   
 
   
-    <link rel="top" title="臺灣言語工具 0.6.11 documentation" href="index.html"/>
+        <link rel="index" title="索引"
+              href="genindex.html"/>
+        <link rel="search" title="搜尋" href="search.html"/>
+    <link rel="top" title="臺灣言語工具 0.6.11 說明文件" href="index.html"/>
         <link rel="next" title="詞性標記（POS Tagging）" href="詞性標記.html"/>
         <link rel="prev" title="語言模型（Language Model）" href="語言模型.html"/> 
 
@@ -90,7 +93,7 @@
 <li class="toctree-l1"><a class="reference internal" href="語音合成.html">語音合成（Speech Synthesis）</a></li>
 <li class="toctree-l1"><a class="reference internal" href="語音辨識.html">語音辨識（Speech Recognition）</a></li>
 <li class="toctree-l1"><a class="reference internal" href="語言模型.html">語言模型（Language Model）</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="">斷詞（Word Segmentation）</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">斷詞（Word Segmentation）</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#">母語斷詞</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#">兩步斷詞</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#">函式定義</a></li>
@@ -135,7 +138,7 @@
         <div class="rst-content">
           
 
-
+ 
 
 
 
@@ -147,7 +150,7 @@
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="_sources/斷詞.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/斷詞.md.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -158,15 +161,15 @@
            <div itemprop="articleBody">
             
   <div class="section" id="word-segmentation">
-<span id="word-segmentation"></span><h1>斷詞（Word Segmentation）<a class="headerlink" href="#word-segmentation" title="Permalink to this headline">¶</a></h1>
-<div class="highlight-python3"><div class="highlight"><pre><span class="n">閩南語辭典</span> <span class="o">=</span> <span class="n">型音辭典</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-<span class="n">閩南語辭典</span><span class="o">.</span><span class="n">加詞</span><span class="p">(</span><span class="n">拆文分析器</span><span class="o">.</span><span class="n">對齊詞物件</span><span class="p">(</span><span class="s">&#39;阿媠&#39;</span><span class="p">,</span> <span class="s">&#39;a1-sui2&#39;</span><span class="p">))</span>
-<span class="n">閩南語辭典</span><span class="o">.</span><span class="n">加詞</span><span class="p">(</span><span class="n">拆文分析器</span><span class="o">.</span><span class="n">對齊詞物件</span><span class="p">(</span><span class="s">&#39;愛 &#39;</span><span class="p">,</span> <span class="s">&#39;ai3&#39;</span><span class="p">))</span>
-<span class="n">閩南語辭典</span><span class="o">.</span><span class="n">加詞</span><span class="p">(</span><span class="n">拆文分析器</span><span class="o">.</span><span class="n">對齊詞物件</span><span class="p">(</span><span class="s">&#39;我&#39;</span><span class="p">,</span> <span class="s">&#39;gua2&#39;</span><span class="p">))</span>
-<span class="n">閩南語辭典</span><span class="o">.</span><span class="n">加詞</span><span class="p">(</span><span class="n">拆文分析器</span><span class="o">.</span><span class="n">對齊詞物件</span><span class="p">(</span><span class="s">&#39;我&#39;</span><span class="p">,</span> <span class="s">&#39;ngoo2&#39;</span><span class="p">))</span>
-<span class="n">閩南語語言模型</span> <span class="o">=</span> <span class="n">KenLM語言模型</span><span class="p">(</span><span class="s">&#39;我愛阿媠.arpa&#39;</span><span class="p">)</span>
+<span id="word-segmentation"></span><h1>斷詞（Word Segmentation）<a class="headerlink" href="#word-segmentation" title="本標題的永久連結">¶</a></h1>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">閩南語辭典</span> <span class="o">=</span> <span class="n">型音辭典</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">閩南語辭典</span><span class="o">.</span><span class="n">加詞</span><span class="p">(</span><span class="n">拆文分析器</span><span class="o">.</span><span class="n">對齊詞物件</span><span class="p">(</span><span class="s1">&#39;阿媠&#39;</span><span class="p">,</span> <span class="s1">&#39;a1-sui2&#39;</span><span class="p">))</span>
+<span class="n">閩南語辭典</span><span class="o">.</span><span class="n">加詞</span><span class="p">(</span><span class="n">拆文分析器</span><span class="o">.</span><span class="n">對齊詞物件</span><span class="p">(</span><span class="s1">&#39;愛 &#39;</span><span class="p">,</span> <span class="s1">&#39;ai3&#39;</span><span class="p">))</span>
+<span class="n">閩南語辭典</span><span class="o">.</span><span class="n">加詞</span><span class="p">(</span><span class="n">拆文分析器</span><span class="o">.</span><span class="n">對齊詞物件</span><span class="p">(</span><span class="s1">&#39;我&#39;</span><span class="p">,</span> <span class="s1">&#39;gua2&#39;</span><span class="p">))</span>
+<span class="n">閩南語辭典</span><span class="o">.</span><span class="n">加詞</span><span class="p">(</span><span class="n">拆文分析器</span><span class="o">.</span><span class="n">對齊詞物件</span><span class="p">(</span><span class="s1">&#39;我&#39;</span><span class="p">,</span> <span class="s1">&#39;ngoo2&#39;</span><span class="p">))</span>
+<span class="n">閩南語語言模型</span> <span class="o">=</span> <span class="n">KenLM語言模型</span><span class="p">(</span><span class="s1">&#39;我愛阿媠.arpa&#39;</span><span class="p">)</span>
 
-<span class="n">閩南語語句</span> <span class="o">=</span> <span class="s">&#39;我愛阿媠&#39;</span>
+<span class="n">閩南語語句</span> <span class="o">=</span> <span class="s1">&#39;我愛阿媠&#39;</span>
 
 <span class="n">處理減號</span> <span class="o">=</span> <span class="n">文章粗胚</span><span class="o">.</span><span class="n">建立物件語句前處理減號</span><span class="p">(</span><span class="n">臺灣閩南語羅馬字拼音</span><span class="p">,</span> <span class="n">閩南語語句</span><span class="p">)</span>
 <span class="n">斷詞的章物件</span> <span class="o">=</span> <span class="p">(</span>
@@ -201,33 +204,33 @@
 </li>
 </ul>
 <div class="section" id="">
-<span id="id1"></span><h2>母語斷詞<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h2>
+<span id="id1"></span><h2>母語斷詞<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h2>
 <p>部份漢語語料是漢字佮羅馬字混雜，為了讓語料能更一致，斷詞有兩種方法</p>
 <div class="section" id="">
-<span id="id2"></span><h3>兩步斷詞<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h3>
+<span id="id2"></span><h3>兩步斷詞<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h3>
 <p>先用辭典切出對應的斷點，才閣揀出其中一個當結果</p>
-<div class="highlight-python3"><div class="highlight"><pre><span class="n">a</span><span class="o">=</span><span class="s">&#39;11&#39;</span>
+<div class="highlight-python3"><div class="highlight"><pre><span></span><span class="n">a</span><span class="o">=</span><span class="s1">&#39;11&#39;</span>
 </pre></div>
 </div>
 <div class="section" id="">
-<span id="id3"></span><h4>函式定義<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h4>
-<div class="highlight-python3"><div class="highlight"><pre>    <span class="k">def</span> <span class="nf">揣詞</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">揣詞方法</span><span class="p">,</span> <span class="o">*</span><span class="n">參數陣列</span><span class="p">,</span> <span class="o">**</span><span class="n">參數物件</span><span class="p">):</span>
+<span id="id3"></span><h4>函式定義<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h4>
+<div class="highlight-python3"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">揣詞</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">揣詞方法</span><span class="p">,</span> <span class="o">*</span><span class="n">參數陣列</span><span class="p">,</span> <span class="o">**</span><span class="n">參數物件</span><span class="p">):</span>
     <span class="k">def</span> <span class="nf">揀</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">揀集內組方法</span><span class="p">,</span> <span class="o">*</span><span class="n">參數陣列</span><span class="p">,</span> <span class="o">**</span><span class="n">參數物件</span><span class="p">):</span>
 </pre></div>
 </div>
 </div>
 </div>
 <div class="section" id="">
-<span id="id4"></span><h3>直接斷詞<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h3>
+<span id="id4"></span><h3>直接斷詞<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h3>
 <p>仝款用辭典佮語言模型，<code class="docutils literal"><span class="pre">辭典語言模型斷詞</span></code>會試逐種組合，毋過速度較慢</p>
 </div>
 </div>
 <div class="section" id="">
-<span id="id5"></span><h2>華語斷詞<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h2>
+<span id="id5"></span><h2>華語斷詞<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h2>
 <p>中研院斷詞</p>
 <div class="section" id="">
-<span id="id6"></span><h3>函式定義<a class="headerlink" href="#" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-python3"><div class="highlight"><pre>    <span class="k">def</span> <span class="nf">斷詞</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">斷詞方法</span><span class="p">,</span> <span class="o">*</span><span class="n">參數陣列</span><span class="p">,</span> <span class="o">**</span><span class="n">參數物件</span><span class="p">):</span>
+<span id="id6"></span><h3>函式定義<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h3>
+<div class="highlight-python3"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">斷詞</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">斷詞方法</span><span class="p">,</span> <span class="o">*</span><span class="n">參數陣列</span><span class="p">,</span> <span class="o">**</span><span class="n">參數物件</span><span class="p">):</span>
 </pre></div>
 </div>
 </div>

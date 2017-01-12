@@ -11,18 +11,18 @@
 ### 入手
 1. 需Unix，建議使用[Mint Linux](https://www.linuxmint.com/download.php)作業系統。若是Mac需要先走`brew install automake autoconf wget libtool`
 2. [裝kaldi](http://kaldi-asr.org/doc/install.html)
-   1.  入去`tools` ，而且照`INSTALL`做
-   2.  入去`src` ，而且照`INSTALL`做
+	1. 入去`tools` ，而且照`INSTALL`做
+	2. 入去`src` ，而且照`INSTALL`做
 3. 走範例
-   1. 入去`egs/yesno/s5`，照伊的`README`指示
-      - `bash run.sh`，幾分鐘內程式會走了
-   2. 入去`egs/vystadial_en/s5`，照伊的`README`指示
-      - 照家己的需要改`cmd.sh`
-      - `bash run.sh`
-        - CPU時間需要5000~6000分鐘
-   3. `egs/voxforge/s5`，走`bash getdata.sh`佮`time bash -x run.sh`
-      - 純CPU時間
-        - `real    10081m51.386s`、`user    32927m9.961s`、`sys     294m11.191s`
+	1. 入去`egs/yesno/s5`，照伊的`README`指示
+		- `bash run.sh`，幾分鐘內程式會走了
+	2. 入去`egs/vystadial_en/s5`，照伊的`README`指示
+		- 照家己的需要改`cmd.sh`
+		- `bash run.sh`
+			- CPU時間需要5000~6000分鐘
+	3. `egs/voxforge/s5`，走`bash getdata.sh`佮`time bash -x run.sh`
+		- 純CPU時間
+			- `real    10081m51.386s`、`user    32927m9.961s`、`sys     294m11.191s`
 4. 看[導覽教學](http://kaldi-asr.org/doc/tutorial.html)
    - 伊的例，語料愛錢，所以提第三步的`yesno`佮`vystadial_en`比較
    - `vystadial_en`的`data`資料夾，叫做`lang_prep`
@@ -60,6 +60,8 @@
   * https://groups.google.com/forum/#!topic/kaldi-help/cXX7y3Hvf3w
   * https://groups.google.com/forum/#!topic/kaldi-help/QqUQoX816GE
   * https://groups.google.com/forum/#!topic/kaldi-help/UiVD5WPA8fI
+* sil
+  * https://groups.google.com/forum/#!msg/kaldi-help/r4pgYLcHfUA/bCz1nyqcDAAJ
 * 錄音相關
   * https://groups.google.com/forum/#!msg/kaldi-help/gBRw7svAQHs/39MuJdu3AAAJ
 * 猶未整理
@@ -68,7 +70,6 @@
    - https://sourceforge.net/p/kaldi/discussion/1355347/thread/33098413/?page=0
    - https://sourceforge.net/p/kaldi/discussion/1355348/thread/476965d5/
    
-
 
 ### 訓練語料準備
 2016/11/12唐鳳的建議
@@ -90,6 +91,12 @@
 #### 補錄語料
 若是拄著辨識錯誤，袂共這个音檔當做訓練語料，會分析是佗位錯誤，若是是腔口的問題，就去錄彼腔口的聲音
 
+
+### 針測信號（Voice activity detection, VAD）
+切語料時會需要。[查資料](https://github.com/sih4sing5hong5/tai5-uan5_gian5-gi2_kang1-ku7/issues/287#issuecomment-262528810)的結果，是用praat就可以得著誠好的結果矣
+
+1. 用praat GUI程式，`minimun pitch`從100Hz調整到60Hz，其他用預設餐數
+2. praat script，需要參考[Sound: To TextGrid (silences)...](http://www.fon.hum.uva.nl/praat/manual/Sound__To_TextGrid__silences____.html)佮相像的[script](http://www.helsinki.fi/%7Elennes/praat-scripts/public/mark_pauses.praat)
 
 ### 訓練語料過濾
 若是訓練語料無夠清氣，會當用`steps/cleanup/clean_and_segment_data.sh`
@@ -178,22 +185,21 @@ lm的文本，大部份的原始來源攏是漢羅
 
 
 #### 語言模型分析
-##### perplexity
-臺語帶聲調的音節，應是 2500 左右。
+##### Perplexity
 詳細數字要看採用的文字語料中【相異】的語言單位之數量。
 
-
+```
 辨識單位 |Ngram| Perplexity 
 ---------|-----| ---------- 
 文(Ch) | 0g | 3426 
 文(Ch) | 7g | 37 
 音(Ts) | 0g | 2441 
 音(Ts) | 7g | 45
+```
 
 以上是TwESC01 (朗讀140篇)10萬字左右做出來的結果。
 
-
-其中 3426 恰好是10萬字中，相異的漢羅字數；2441恰好是相異的聲調音節數。
+其中 3426 恰好是10萬字中，相異的漢羅字數；2441恰好是相異的帶聲調音節數。
 
 ##### 案例1
 試perplexity的結果是這樣：

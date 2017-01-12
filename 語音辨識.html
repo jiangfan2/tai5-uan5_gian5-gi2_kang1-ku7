@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>語音辨識（Speech Recognition） &mdash; 臺灣言語工具 0.6.11 說明文件</title>
+  <title>語音辨識（Speech Recognition） &mdash; 臺灣言語工具 0.6.15 說明文件</title>
   
 
   
@@ -33,7 +33,7 @@
         <link rel="index" title="索引"
               href="genindex.html"/>
         <link rel="search" title="搜尋" href="search.html"/>
-    <link rel="top" title="臺灣言語工具 0.6.11 說明文件" href="index.html"/>
+    <link rel="top" title="臺灣言語工具 0.6.15 說明文件" href="index.html"/>
         <link rel="next" title="語言模型（Language Model）" href="語言模型.html"/>
         <link rel="prev" title="語音合成（Speech Synthesis）" href="語音合成.html"/> 
 
@@ -101,6 +101,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#">補錄語料</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#voice-activity-detection-vad">針測信號（Voice activity detection, VAD）</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#">訓練語料過濾</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#">會切音檔</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#">調時間</a></li>
@@ -298,6 +299,10 @@
 <li>https://groups.google.com/forum/#!topic/kaldi-help/UiVD5WPA8fI</li>
 </ul>
 </li>
+<li>sil<ul>
+<li>https://groups.google.com/forum/#!msg/kaldi-help/r4pgYLcHfUA/bCz1nyqcDAAJ</li>
+</ul>
+</li>
 <li>錄音相關<ul>
 <li>https://groups.google.com/forum/#!msg/kaldi-help/gBRw7svAQHs/39MuJdu3AAAJ</li>
 </ul>
@@ -338,6 +343,14 @@
 <span id="id6"></span><h4>補錄語料<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h4>
 <p>若是拄著辨識錯誤，袂共這个音檔當做訓練語料，會分析是佗位錯誤，若是是腔口的問題，就去錄彼腔口的聲音</p>
 </div>
+</div>
+<div class="section" id="voice-activity-detection-vad">
+<span id="voice-activity-detection-vad"></span><h3>針測信號（Voice activity detection, VAD）<a class="headerlink" href="#voice-activity-detection-vad" title="本標題的永久連結">¶</a></h3>
+<p>切語料時會需要。<a class="reference external" href="https://github.com/sih4sing5hong5/tai5-uan5_gian5-gi2_kang1-ku7/issues/287#issuecomment-262528810">查資料</a>的結果，是用praat就可以得著誠好的結果矣</p>
+<ol class="simple">
+<li>用praat GUI程式，<code class="docutils literal"><span class="pre">minimun</span> <span class="pre">pitch</span></code>從100Hz調整到60Hz，其他用預設餐數</li>
+<li>praat script，需要參考<a class="reference external" href="http://www.fon.hum.uva.nl/praat/manual/Sound__To_TextGrid__silences____.html">Sound: To TextGrid (silences)...</a>佮相像的<a class="reference external" href="http://www.helsinki.fi/%7Elennes/praat-scripts/public/mark_pauses.praat">script</a></li>
+</ol>
 </div>
 <div class="section" id="">
 <span id="id7"></span><h3>訓練語料過濾<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h3>
@@ -429,17 +442,18 @@ tong0000292-0003393無註明-ku0003393-2 tong0000292 8148.88 8150.04
 <div class="section" id="">
 <span id="id13"></span><h4>語言模型分析<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h4>
 <div class="section" id="perplexity">
-<span id="perplexity"></span><h5>perplexity<a class="headerlink" href="#perplexity" title="本標題的永久連結">¶</a></h5>
-<p>臺語帶聲調的音節，應是 2500 左右。
-詳細數字要看採用的文字語料中【相異】的語言單位之數量。</p>
-<p>辨識單位 |Ngram| Perplexity
-&#8212;&#8212;&#8212;|&#8212;&#8211;| &#8212;&#8212;&#8212;-
-文(Ch) | 0g | 3426
-文(Ch) | 7g | 37
-音(Ts) | 0g | 2441
-音(Ts) | 7g | 45</p>
+<span id="perplexity"></span><h5>Perplexity<a class="headerlink" href="#perplexity" title="本標題的永久連結">¶</a></h5>
+<p>詳細數字要看採用的文字語料中【相異】的語言單位之數量。</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">辨識單位</span> <span class="o">|</span><span class="n">Ngram</span><span class="o">|</span> <span class="n">Perplexity</span> 
+<span class="o">---------|-----|</span> <span class="o">----------</span> 
+<span class="n">文</span><span class="p">(</span><span class="n">Ch</span><span class="p">)</span> <span class="o">|</span> <span class="mi">0</span><span class="n">g</span> <span class="o">|</span> <span class="mi">3426</span> 
+<span class="n">文</span><span class="p">(</span><span class="n">Ch</span><span class="p">)</span> <span class="o">|</span> <span class="mi">7</span><span class="n">g</span> <span class="o">|</span> <span class="mi">37</span> 
+<span class="n">音</span><span class="p">(</span><span class="n">Ts</span><span class="p">)</span> <span class="o">|</span> <span class="mi">0</span><span class="n">g</span> <span class="o">|</span> <span class="mi">2441</span> 
+<span class="n">音</span><span class="p">(</span><span class="n">Ts</span><span class="p">)</span> <span class="o">|</span> <span class="mi">7</span><span class="n">g</span> <span class="o">|</span> <span class="mi">45</span>
+</pre></div>
+</div>
 <p>以上是TwESC01 (朗讀140篇)10萬字左右做出來的結果。</p>
-<p>其中 3426 恰好是10萬字中，相異的漢羅字數；2441恰好是相異的聲調音節數。</p>
+<p>其中 3426 恰好是10萬字中，相異的漢羅字數；2441恰好是相異的帶聲調音節數。</p>
 </div>
 <div class="section" id="">
 <span id="id14"></span><h5>案例1<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h5>
@@ -662,7 +676,7 @@ aih ʔ aiʔ
     <script type="text/javascript">
         var DOCUMENTATION_OPTIONS = {
             URL_ROOT:'./',
-            VERSION:'0.6.11',
+            VERSION:'0.6.15',
             COLLAPSE_INDEX:false,
             FILE_SUFFIX:'.html',
             HAS_SOURCE:  true

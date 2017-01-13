@@ -90,10 +90,18 @@
 <li class="toctree-l1"><a class="reference internal" href="基本物件.html">基本物件</a></li>
 <li class="toctree-l1"><a class="reference internal" href="常見情境.html">常見情境</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">機器翻譯（Machine Translation）</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#">套件準備</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#">安裝</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#">模型訓練</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#">模型使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#moses">Moses</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#">套件準備</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#ubuntu14-04-mint17">Ubuntu14.04/Mint17</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mac">Mac</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#">安裝</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#">模型訓練</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#">模型使用</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#">其他翻譯工具</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="語音合成.html">語音合成（Speech Synthesis）</a></li>
@@ -190,15 +198,72 @@
 </li>
 </ul>
 <p>本函式庫使用<a class="reference external" href="http://www.statmt.org/moses/?n=Development.GetStarted">Moses</a>統計式機器翻譯。</p>
+<div class="section" id="moses">
+<span id="moses"></span><h2>Moses<a class="headerlink" href="#moses" title="本標題的永久連結">¶</a></h2>
 <div class="section" id="">
-<span id="id1"></span><h2>套件準備<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h2>
+<span id="id1"></span><h3>套件準備<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h3>
+<div class="section" id="ubuntu14-04-mint17">
+<span id="ubuntu14-04-mint17"></span><h4>Ubuntu14.04/Mint17<a class="headerlink" href="#ubuntu14-04-mint17" title="本標題的永久連結">¶</a></h4>
 <div class="highlight-bash"><div class="highlight"><pre><span></span>sudo apt-get install -y g++ git subversion automake libtool zlib1g-dev libboost-all-dev libbz2-dev liblzma-dev python3-dev libgoogle-perftools-dev libxmlrpc-c++.*-dev <span class="c1"># moses, libxmlrpc for mosesserver</span>
 sudo apt-get install -y cmake <span class="c1"># mgiza</span>
 </pre></div>
 </div>
 </div>
+<div class="section" id="mac">
+<span id="mac"></span><h4>Mac<a class="headerlink" href="#mac" title="本標題的永久連結">¶</a></h4>
+<p>感謝<a class="reference external" href="https://www.facebook.com/ru.lu0">Ru Lu</a>提供做法</p>
+<div class="section" id="compile-boost">
+<span id="compile-boost"></span><h5>compile boost<a class="headerlink" href="#compile-boost" title="本標題的永久連結">¶</a></h5>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">bootstrap</span><span class="o">.</span><span class="n">sh</span> <span class="o">--</span><span class="k">with</span><span class="o">-</span><span class="n">libraries</span><span class="o">=</span><span class="n">filesystem</span><span class="p">,</span><span class="n">system</span><span class="p">,</span><span class="n">test</span><span class="p">,</span><span class="n">thread</span><span class="p">,</span><span class="n">program_options</span><span class="p">,</span><span class="n">serialization</span><span class="p">,</span><span class="n">iostreams</span>
+<span class="o">./</span><span class="n">bjam</span> <span class="n">stage</span> <span class="o">&amp;&amp;</span> <span class="n">sudo</span> <span class="o">./</span><span class="n">bjam</span> <span class="n">install</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="compile-moses">
+<span id="compile-moses"></span><h5>compile moses<a class="headerlink" href="#compile-moses" title="本標題的永久連結">¶</a></h5>
+<div class="highlight-default"><div class="highlight"><pre><span></span>brew install xmlrpc-c
+./bjam -j8 --prefix=$PWD --libdir=$PWD/lib64 --layout=system link=static toolset=clang  install || echo FAILURE
+</pre></div>
+</div>
+<p>強迫重新編譯時加<code class="docutils literal"><span class="pre">-a</span></code></p>
+</div>
+<div class="section" id="compile-giza">
+<span id="compile-giza"></span><h5>compile giza++<a class="headerlink" href="#compile-giza" title="本標題的永久連結">¶</a></h5>
+<div class="highlight-default"><div class="highlight"><pre><span></span>clu:giza-pp clu$ git diff
+diff --git a/GIZA++-v2/Makefile b/GIZA++-v2/Makefile
+index 17daae5..8defea3 100644
+--- a/GIZA++-v2/Makefile
++++ b/GIZA++-v2/Makefile
+@@ -6,7 +6,8 @@ INSTALLDIR ?= /usr/local/bin/
+
+ CFLAGS = $(CFLAGS_GLOBAL) -Wall -Wno-parentheses
+ #CFLAGS_OPT = $(CFLAGS) -O3 -DNDEBUG -DWORDINDEX_WITH_4_BYTE -O3 -DNDEBUG -DWORDINDEX_WITH_4_BYTE -ffast-math
+-CFLAGS_OPT = $(CFLAGS) -O3 -funroll-loops -DNDEBUG -DWORDINDEX_WITH_4_BYTE -DBINARY_SEARCH_FOR_TTABLE -DWORDINDEX_WITH_4_BYTE
++#CFLAGS_OPT = $(CFLAGS) -O3 -funroll-loops -DNDEBUG -DWORDINDEX_WITH_4_BYTE -DBINARY_SEARCH_FOR_TTABLE -DWORDINDEX_WITH_4_BYTE
++CFLAGS_OPT = $(CFLAGS) -O3 -funroll-loops -DNDEBUG -DWORDINDEX_WITH_4_BYTE -DWORDINDEX_WITH_4_BYTE -stdlib=libstdc++
+ CFLAGS_PRF = $(CFLAGS) -O2 -pg -DNDEBUG -DWORDINDEX_WITH_4_BYTE
+ CFLAGS_DBG = $(CFLAGS) -g -DDEBUG -DWORDINDEX_WITH_4_BYTE
+ CFLAGS_NRM = $(CFLAGS) -DWORDINDEX_WITH_4_BYTE
+diff --git a/mkcls-v2/Makefile b/mkcls-v2/Makefile
+index 66a86d0..10ec3b6 100644
+--- a/mkcls-v2/Makefile
++++ b/mkcls-v2/Makefile
+@@ -5,7 +5,7 @@ OBJS = GDAOptimization.o HCOptimization.o Problem.o \
+             KategProblemWBC.o KategProblem.o StatVar.o general.o \
+             mkcls.o
+
+-CFLAGS = -Wall -W -DNDEBUG -O3 -funroll-loops
++CFLAGS = -Wall -W -DNDEBUG -O3 -funroll-loops -stdlib=libstdc++
+
+ .cpp.o:
+        $(CXX) $(CFLAGS) -c $&lt; -o $@
+</pre></div>
+</div>
+</div>
+</div>
+</div>
 <div class="section" id="">
-<span id="id2"></span><h2>安裝<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h2>
+<span id="id2"></span><h3>安裝<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h3>
 <p>編譯需要半小時至一小時以上，剩下的步驟可以邊做
 執行<code class="docutils literal"><span class="pre">python</span></code>，而且輸入</p>
 <div class="highlight-python3"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">臺灣言語工具.翻譯.摩西工具.安裝摩西翻譯佮相關程式</span> <span class="k">import</span> <span class="n">安裝摩西翻譯佮相關程式</span>
@@ -208,10 +273,17 @@ sudo apt-get install -y cmake <span class="c1"># mgiza</span>
 </div>
 </div>
 <div class="section" id="">
-<span id="id3"></span><h2>模型訓練<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h2>
+<span id="id3"></span><h3>模型訓練<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h3>
 </div>
 <div class="section" id="">
-<span id="id4"></span><h2>模型使用<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h2>
+<span id="id4"></span><h3>模型使用<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h3>
+</div>
+</div>
+<div class="section" id="">
+<span id="id5"></span><h2>其他翻譯工具<a class="headerlink" href="#" title="本標題的永久連結">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://www.tensorflow.org/tutorials/seq2seq/">seq2seq</a></li>
+</ul>
 </div>
 </div>
 
